@@ -24,9 +24,19 @@ public class HamburgerMenuUI : MonoBehaviour
     {
         SetExpanded(false, instant: true);
 
-        if (menuButton)
-            menuButton.onClick.AddListener(Toggle);
-        
+        if (menuButton) menuButton.onClick.AddListener(Toggle);
+        if (questButton) questButton.onClick.AddListener(OnClickQuest);
+        if (recipeButton) recipeButton.onClick.AddListener(OnClickRecipe);
+        if (settingsButton) settingsButton.onClick.AddListener(OnClickSettings);
+
+    }
+
+    void OnDestroy()
+    {
+        if (menuButton) menuButton.onClick.RemoveListener(Toggle);
+        if (questButton) questButton.onClick.RemoveListener(OnClickQuest);
+        if (recipeButton) recipeButton.onClick.RemoveListener(OnClickRecipe);
+        if (settingsButton) settingsButton.onClick.RemoveListener(OnClickSettings);
     }
 
     void Update()
@@ -53,10 +63,6 @@ public class HamburgerMenuUI : MonoBehaviour
         //서브메뉴 표시
         if(subMenu)
             subMenu.SetActive(expand);
-        
-        if (questButton) questButton.onClick.AddListener(OnClickQuest);
-        if (recipeButton) recipeButton.onClick.AddListener(OnClickRecipe);
-        if (settingsButton) settingsButton.onClick.AddListener(OnClickSettings);
 
     }
 
