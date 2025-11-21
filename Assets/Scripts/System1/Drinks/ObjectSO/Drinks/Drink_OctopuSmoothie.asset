@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83f115d3b45423a4e8af900515064316, type: 3}
+  m_Name: Drink_OctopuSmoothie
+  m_EditorClassIdentifier: 
+  drinkName: "\uBB38\uC5B4\uC758 \uAFC8 \uC2A4\uBB34\uB514"
+  drinkIcon: {fileID: 0}
+  drinkPrefab: {fileID: 0}
+  baseIngredient: {fileID: 11400000, guid: d5ebd30d9f11d5d40a76f6e7e0e9a90e, type: 2}
+  baseWay: {fileID: 11400000, guid: 750f20a91a9b918428535439aa6e0eae, type: 2}
+  ingredients:
+  - {fileID: 11400000, guid: ea519631f6e4f5e4989953941cdb825d, type: 2}
+  - {fileID: 11400000, guid: bfd5bb228b2817b4a80766b57ebc54cc, type: 2}
