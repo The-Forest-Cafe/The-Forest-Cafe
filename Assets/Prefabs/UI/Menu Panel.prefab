@@ -496,6 +496,7 @@ MonoBehaviour:
   questButton: {fileID: 8264475904036253120}
   recipeButton: {fileID: 2893590757136106374}
   settingsButton: {fileID: 6314706598539893645}
+  settingsPanel: {fileID: 1588789694421400487, guid: 3194365f17b45a745abfc169d49d47f9, type: 3}
 --- !u!1 &6372599059615980769
 GameObject:
   m_ObjectHideFlags: 0
