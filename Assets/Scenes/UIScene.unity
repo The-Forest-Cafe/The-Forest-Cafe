@@ -335,6 +335,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1037420339 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5315947080527218167, guid: b86efce53d3f2914fa8ee2a29b9cf439, type: 3}
+  m_PrefabInstance: {fileID: 1969072264}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1165190209 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1083505444683490473, guid: b86efce53d3f2914fa8ee2a29b9cf439, type: 3}
@@ -454,6 +459,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7742567394337506639, guid: b86efce53d3f2914fa8ee2a29b9cf439, type: 3}
+      propertyPath: settingsPanel
+      value: 
+      objectReference: {fileID: 1037420339}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

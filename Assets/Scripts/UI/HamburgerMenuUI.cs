@@ -7,7 +7,7 @@ public class HamburgerMenuUI : MonoBehaviour
     public Button menuButton;
     public Image menuButtonImage;
     public GameObject subMenu;
-    
+
 
     [Header("메뉴 아이콘")]
     [SerializeField] Sprite hamburgerIcon;
@@ -17,6 +17,7 @@ public class HamburgerMenuUI : MonoBehaviour
     [SerializeField] Button questButton;
     [SerializeField] Button recipeButton;
     [SerializeField] Button settingsButton;
+    [SerializeField] GameObject settingsPanel;
 
     public bool IsExpanded { get; private set; }
 
@@ -57,11 +58,11 @@ public class HamburgerMenuUI : MonoBehaviour
         IsExpanded = expand;
 
         //메뉴 아이콘 교체
-        if(menuButtonImage)
+        if (menuButtonImage)
             menuButtonImage.sprite = expand ? closeIcon : hamburgerIcon;
 
         //서브메뉴 표시
-        if(subMenu)
+        if (subMenu)
             subMenu.SetActive(expand);
 
     }
@@ -84,6 +85,9 @@ public class HamburgerMenuUI : MonoBehaviour
     {
         Debug.Log("QuestBook Open");
         SetExpanded(false);
-        //TODO: 설정창 UI 열기 로직 호출
+        if (settingsPanel != null)
+            settingsPanel.SetActive(true);  // 패널 활성화
+        else
+            Debug.LogWarning("Settings Panel이 연결되지 않았습니다!");
     }
 }
