@@ -2256,6 +2256,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RecipeBook Panel
       objectReference: {fileID: 0}
+    - target: {fileID: 5025975872977812849, guid: 0ace2306bb132164d9032847dc4fd3ec, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5568937671134881328, guid: 0ace2306bb132164d9032847dc4fd3ec, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
