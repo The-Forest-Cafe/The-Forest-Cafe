@@ -12,7 +12,7 @@ public class CustomerNPC : MonoBehaviour, INPCOrderable
         TestSeat();
     }
 
-    // 주문 받기 기능 테스트를 위한 코드
+    // TestCode
     public void TestSeat()
     {
         if (Input.GetKeyDown(KeyCode.R))

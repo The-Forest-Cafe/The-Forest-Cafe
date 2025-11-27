@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -33,10 +34,12 @@ public class PurchaseObjectInfo : MonoBehaviour
         if (objectSO.isSelected == true)
         {
             TotalSum.Instance.totalSum += objectSO.price;
+            PurchaseManager.Instance.AddList(objectSO);
         }
         else
         {
             TotalSum.Instance.totalSum -= objectSO.price;
+            PurchaseManager.Instance.RemoveList(objectSO);
         }
 
         TotalSum.Instance.SetSumText();
