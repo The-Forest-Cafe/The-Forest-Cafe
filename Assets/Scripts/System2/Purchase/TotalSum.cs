@@ -25,6 +25,12 @@ public class TotalSum : MonoBehaviour
 
     private void Start()
     {
+        InitTotalSum();
+        PurchaseManager.Instance.onPurchaseListInited += InitTotalSum;
+    }
+
+    private void InitTotalSum()
+    {
         totalSum = 0;
         SetSumText();
     }

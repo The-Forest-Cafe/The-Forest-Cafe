@@ -12,6 +12,13 @@ public class SelectButton : MonoBehaviour
     private void Start()
     {
         checkText = GetComponentInChildren<Text>();
+        InitCheckBtn();
+
+        PurchaseManager.Instance.onPurchaseListInited += InitCheckBtn;
+    }
+
+    private void InitCheckBtn()
+    {
         isChecked = false;
         checkText.gameObject.SetActive(isChecked);
     }
