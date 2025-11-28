@@ -18,6 +18,8 @@ public class HamburgerMenuUI : MonoBehaviour
     [SerializeField] Button recipeButton;
     [SerializeField] Button settingsButton;
     [SerializeField] GameObject settingsPanel;
+    [SerializeField] GameObject questBookPanel;
+    [SerializeField] GameObject recipeBookPanel;
 
     public bool IsExpanded { get; private set; }
 
@@ -71,14 +73,20 @@ public class HamburgerMenuUI : MonoBehaviour
     {
         Debug.Log("QuestBook Open");
         SetExpanded(false);
-        //TODO: 퀘스트북 UI 열기 로직 호출
+        if (questBookPanel != null)
+            questBookPanel.SetActive(true);  // 패널 활성화
+        else
+            Debug.LogWarning("QuestBook Panel이 연결되지 않았습니다!");
     }
 
     void OnClickRecipe()
     {
         Debug.Log("QuestBook Open");
         SetExpanded(false);
-        //TODO: 레시피북 UI 열기 로직 호출
+        if (recipeBookPanel != null)
+            recipeBookPanel.SetActive(true);  // 패널 활성화
+        else
+            Debug.LogWarning("RecipeBook Panel이 연결되지 않았습니다!");
     }
 
     void OnClickSettings()
