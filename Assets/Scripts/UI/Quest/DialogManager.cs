@@ -1,24 +1,26 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
+using System.Collections.Generic;
 
 public class DialogManager : MonoBehaviour
 {
-    public static DialogManager Instance;
+    public static DialogManager Instance { get; private set; }
 
-    [Header("UI")]
-    public GameObject dialogPanel;
-    public Text dialogText;
-    public Text nameText;
+    [Header("UI Reference")]
+    [SerializeField] GameObject dialogRoot; //패널 전체 (대사창)
+    [SerializeField] Text dialogText;       //실제 대사 텍스트
+    [SerializeField] Image cursorImage;     //커서(화살표 등)
 
-    string[] currentLines;
-    int currentIndex;
+    [Header("Cursor Motion")]
+    [SerializeField] float cursorMoveAmplitude = 8f; //위아래 움직이는 범위
+    [SerializeField] float cursorMoveSpeed = 6f;     //속도
 
-    bool isTyping;
-    Coroutine typingRoutine;
+    List<string> lines = new List<string>();
+    int currentIndex = 0;
+    bool isShowing = false;
+    float cursorBaseY;
 
-    [Header("Typing")]
-    public float typingSpeed = 0.03f;
+    public bool IsShowing => isShowing;
 
     void Awake()
     {
@@ -28,114 +30,81 @@ public class DialogManager : MonoBehaviour
             return;
         }
         Instance = this;
+
+        if (dialogRoot != null)
+            dialogRoot.SetActive(false);
+
+        if (cursorImage != null)
+            cursorBaseY = cursorImage.rectTransform.anchoredPosition.y;
     }
 
     void Update()
     {
-        //패널이 꺼져 있으면 입력 무시
-        if (dialogPanel == null || !dialogPanel.activeSelf) return;
+        if(!isShowing)
+            return;
 
-        //마우스 왼쪽 클릭시
+        //화면 아무데나 클릭 시 다음 대사
         if (Input.GetMouseButtonDown(0))
         {
-            if (isTyping)
-            {
-                StopTyping();
-            }
-            else
-            {
-                NextLine();
-            }
+            NextLine();
+        }
+
+        //커서 위아래로 살짝 움직이게
+        if (cursorImage != null)
+        {
+            var rt = cursorImage.rectTransform;
+            var pos = rt.anchoredPosition;
+            pos.y = cursorBaseY + Mathf.Sin(Time.unscaledTime * cursorMoveSpeed) * cursorMoveAmplitude;
+            rt.anchoredPosition = pos;
         }
     }
 
-    //외부에서 대사 시작할 때 호출
-    public void StartDialog(string[] lines, string speakerName = "")
+    public void Show(string[] newLines)
     {
-        if (lines == null || lines.Length == 0)
+        if (newLines == null || newLines.Length == 0)
+        {
+            Debug.LogWarning("DialogManager.Show : lines 가 비어있음");
             return;
+        }
 
-        currentLines = lines;
+        lines.Clear();
+        lines.AddRange(newLines);
         currentIndex = 0;
+        isShowing = true;
 
-        if (nameText != null)
-            nameText.text = speakerName;
+        if (dialogRoot != null)
+            dialogRoot.SetActive(true);
 
-        if (dialogPanel != null)
-            dialogPanel.SetActive(true);
-
-        ShowLine();
+        ApplyCurrentLine();
     }
 
-    void ShowLine()
+    void ApplyCurrentLine()
     {
-        if (currentLines == null || currentIndex >= currentLines.Length)
-        {
-            EndDialog();
-            return;
-        }
-
-        string line = currentLines[currentIndex];
-
-        if (typingRoutine != null)
-            StopCoroutine(typingRoutine);
-
-        // 타이핑 효과 켜기
-        typingRoutine = StartCoroutine(Typing(line));
-    }
-
-    IEnumerator Typing(string line)
-    {
-        isTyping = true;
-
-        if (dialogText != null)
-            dialogText.text = "";
-
-        // typingSpeed가 0이거나 음수면 그냥 한 번에 출력
-        if (typingSpeed <= 0f)
+        if (currentIndex >= 0 && currentIndex < lines.Count)
         {
             if (dialogText != null)
-                dialogText.text = line;
-
-            isTyping = false;
-            yield break;
+                dialogText.text = lines[currentIndex];
         }
-
-        foreach (char c in line)
-        {
-            if (dialogText != null)
-                dialogText.text += c;
-
-            yield return new WaitForSeconds(typingSpeed);
-        }
-
-        isTyping = false;
-    }
-
-    void StopTyping()
-    {
-        if (typingRoutine != null)
-            StopCoroutine(typingRoutine);
-
-        if (dialogText != null && currentLines != null && currentIndex < currentLines.Length)
-            dialogText.text = currentLines[currentIndex];
-
-        isTyping = false;
     }
 
     void NextLine()
     {
         currentIndex++;
-        ShowLine();
+        if (currentIndex >= lines.Count)
+        {
+            Close();
+        }
+        else
+        {
+            ApplyCurrentLine();
+        }
     }
 
-    void EndDialog()
+    public void Close()
     {
-        if (dialogPanel != null)
-            dialogPanel.SetActive(false);
+        isShowing = false;
 
-        currentLines = null;
-        currentIndex = 0;
-        isTyping = false;
+        if (dialogRoot != null)
+            dialogRoot.SetActive(false);
     }
 }
