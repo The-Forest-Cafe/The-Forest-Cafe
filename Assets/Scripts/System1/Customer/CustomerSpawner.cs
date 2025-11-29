@@ -30,7 +30,7 @@ public class CustomerSpawner : MonoBehaviour
     {
         while (true)
         {
-            float waitTime = Random.Range(25.0f, 40.0f); // 25~40초로 나중에 수정
+            float waitTime = Random.Range(5.0f, 10.0f); // 25~40초로 나중에 수정
             yield return new WaitForSeconds(waitTime);
 
      
