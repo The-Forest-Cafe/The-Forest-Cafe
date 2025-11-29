@@ -37,6 +37,6 @@ public class TotalSum : MonoBehaviour
 
     public void SetSumText()
     {
-        totalSumText.text = $"{totalSum.ToString()}¿ø";
+        totalSumText.text = $"{totalSum.ToString()}";
     }
 }
