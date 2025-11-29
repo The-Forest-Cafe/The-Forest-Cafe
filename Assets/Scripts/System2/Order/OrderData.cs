@@ -6,6 +6,4 @@ public class OrderData
 {
     public string drinkName;
     public string customerName;
-    public Sprite drinkImage;
-    public Sprite customerImage;
 }
