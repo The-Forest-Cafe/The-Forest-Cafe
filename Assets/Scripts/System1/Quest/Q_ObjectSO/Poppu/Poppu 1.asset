@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d58804825151fae40b4f307df0663b58, type: 3}
+  m_Name: Poppu 1
+  m_EditorClassIdentifier: 
+  questTitle: "\uD3EC\uD478 \uD018\uC2A4\uD2B81"
+  description: "\uD3EC\uD478 \uD018\uC2A4\uD2B81"
+  targetCustomer: {fileID: 11400000, guid: 343d1851ba7537a419ce29f1dce88c97, type: 2}
+  targetRecipe: {fileID: 11400000, guid: 68dae3f39bc39b9498bbffa636fffcf9, type: 2}
+  targetTag: 0
+  goalCount: 5
+  currentCount: 0
+  isCompleted: 0
