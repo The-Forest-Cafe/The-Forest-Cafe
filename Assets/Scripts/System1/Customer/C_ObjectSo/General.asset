@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42b8496f890d39e44b7b4170c7ade305, type: 3}
+  m_Name: General
+  m_EditorClassIdentifier: 
+  npcName: "\uC77C\uBC18 \uC190\uB2D8"
+  npcPrefab: {fileID: 0}
+  type: 1
+  possibleMenus:
+  - {fileID: 11400000, guid: 7ea36d6c4d23b644ca5d022b2884fd91, type: 2}
+  - {fileID: 11400000, guid: 934345db2aeee7c48b9376a4261ab55f, type: 2}
+  - {fileID: 11400000, guid: 4ca048ec3fc18834a8abc6061f5f16b1, type: 2}
+  - {fileID: 11400000, guid: 68dae3f39bc39b9498bbffa636fffcf9, type: 2}
