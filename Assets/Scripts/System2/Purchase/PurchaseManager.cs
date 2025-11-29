@@ -1,17 +1,20 @@
+using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
+using Unity.Collections;
 using UnityEngine;
-using static PurchaseManager;
+using static System.Net.Mime.MediaTypeNames;
 
 public class PurchaseManager : MonoBehaviour
 {
     public static PurchaseManager Instance;
     public PlayerInventory player;
 
-    private List<PurchaseObjectSO> purchaseList;
-
     public delegate void OnPurchaseListInited();
     public event OnPurchaseListInited onPurchaseListInited;
+
+    [SerializeField]
+    private UnityEngine.UI.Text noticeText;    // 돈 부족/충족 시 노출되는 텍스트
+    private List<PurchaseObjectSO> purchaseList;
 
     private void Awake()
     {
@@ -26,6 +29,7 @@ public class PurchaseManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         #endregion
 
+        noticeText.color = new Color(255, 255, 255, 0);
         InitList();
         onPurchaseListInited += InitList;
     }
@@ -47,9 +51,11 @@ public class PurchaseManager : MonoBehaviour
 
     public void OnPurchaseButtonClicked()
     {
+        bool res = MoneyManager.Instance.SpendMoney(TotalSum.Instance.totalSum);
+        SetNoticeText(res);
+
         // 돈 확인
-        if (!MoneyManager.Instance.SpendMoney(TotalSum.Instance.totalSum))
-            return;
+        if (!res) return;
 
         foreach (PurchaseObjectSO material in purchaseList)
         {
@@ -68,5 +74,53 @@ public class PurchaseManager : MonoBehaviour
     public void OnPurchasePanelClosed()
     {
         onPurchaseListInited?.Invoke();
+    }
+
+    private void SetNoticeText(bool res)
+    {
+        if (res)
+        {
+            noticeText.color = new Color32(44, 135, 40, 255);
+            noticeText.text = "재료 구매 완료!";
+        }
+        else
+        {
+            noticeText.color = Color.red;
+            noticeText.text = "소지한 돈이 충분하지 않습니다!";
+        }
+
+        StartCoroutine(TextFadeIn(.2f));
+    }
+
+    public IEnumerator TextFadeIn(float duration)
+    {
+        float t = 0f;
+        Color c = noticeText.color;
+
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            c.a = Mathf.Lerp(0f, 1f, t / duration);
+            noticeText.color = c;
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(.5f);
+
+        StartCoroutine(TextFadeOut(.2f));
+    }
+
+    public IEnumerator TextFadeOut(float duration)
+    {
+        float t = 0f;
+        Color c = noticeText.color;
+
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            c.a = Mathf.Lerp(1f, 0f, t / duration);
+            noticeText.color = c;
+            yield return null;
+        }
     }
 }
