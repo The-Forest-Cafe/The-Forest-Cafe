@@ -43,7 +43,7 @@ public class CustomerController : MonoBehaviour
     {
         if (anim != null && agent != null && agent.enabled)
         {
-            bool isMoving = agent.velocity.sqrMagnitude > 0.1f;
+            bool isMoving = agent.velocity.sqrMagnitude > 0.01f;
             anim.SetBool("IsWalking", isMoving);
         }
     }

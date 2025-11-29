@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Poppu
   m_EditorClassIdentifier: 
   npcName: "\uD3EC\uD478"
-  npcPrefab: {fileID: 4359416713312240868, guid: 0a313dedd15457b4c92ee0be86cc2bca, type: 3}
+  npcPrefab: {fileID: 6382917160946690827, guid: 10b2c1f2ec594a0438dd7a872eda49cd, type: 3}
   type: 1
   possibleMenus:
   - {fileID: 11400000, guid: 7ea36d6c4d23b644ca5d022b2884fd91, type: 2}

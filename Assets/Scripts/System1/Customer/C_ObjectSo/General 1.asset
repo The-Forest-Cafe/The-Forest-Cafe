@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 42b8496f890d39e44b7b4170c7ade305, type: 3}
-  m_Name: General
+  m_Name: General 1
   m_EditorClassIdentifier: 
   npcName: "\uC77C\uBC18 \uC190\uB2D8"
-  npcPrefab: {fileID: 378868052701554713, guid: 693e587bbc378ab46bdcac8b6de77da0, type: 3}
+  npcPrefab: {fileID: 7968093674275253442, guid: d29756c770c6a7f47885320ada4f77a2, type: 3}
   type: 0
   possibleMenus:
   - {fileID: 11400000, guid: 7ea36d6c4d23b644ca5d022b2884fd91, type: 2}
