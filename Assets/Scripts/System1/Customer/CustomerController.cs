@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.AI; // NavMeshAgent 사용을 위해 필수
+using UnityEngine.AI;
 using System.Collections;
 
 public class CustomerController : MonoBehaviour
@@ -13,7 +13,7 @@ public class CustomerController : MonoBehaviour
     public Recipe currentOrder;
 
     private NavMeshAgent agent;
-    private Animator anim; // [New] 애니메이터 컴포넌트
+    private Animator anim;
     private Transform counterPoint;
     private Transform exitPoint;
     private Transform mySeatPoint;
@@ -32,19 +32,17 @@ public class CustomerController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         if (agent == null) agent = gameObject.AddComponent<NavMeshAgent>();
 
-        // [New] 애니메이터 가져오기 (자식 오브젝트에 있을 수도 있으니InChildren 사용)
+        // 애니메이터
         anim = GetComponentInChildren<Animator>();
 
         MoveToCounter();
     }
 
-    // [New] 매 프레임마다 걷는지 체크해서 애니메이션 재생
+
     private void Update()
     {
         if (anim != null && agent != null && agent.enabled)
         {
-            // 움직이는 속도가 0.1보다 크면 '걷는 중'으로 판단
-            // sqrMagnitude는 속도의 제곱(성능 최적화용)
             bool isMoving = agent.velocity.sqrMagnitude > 0.1f;
             anim.SetBool("IsWalking", isMoving);
         }
@@ -63,7 +61,7 @@ public class CustomerController : MonoBehaviour
         isWaitingForOrder = false;
         StopAllCoroutines();
 
-        Debug.Log($"손님({myData.npcName}): 주문 감사합니다! ({currentOrder.drinkName}) 자리에 가서 기다릴게요.");
+        Debug.Log($"손님({myData.npcName}): 주문 완료");
         MoveToSeat();
     }
 
@@ -88,7 +86,7 @@ public class CustomerController : MonoBehaviour
         {
             if (!agent.pathPending && agent.remainingDistance < 0.5f)
             {
-                // 도착하면 걷기 애니메이션 끄기
+
                 if (anim != null) anim.SetBool("IsWalking", false);
 
                 if (isToCounter) StartOrderWait();
@@ -103,7 +101,7 @@ public class CustomerController : MonoBehaviour
     {
         isWaitingForOrder = true;
         DecideOrder();
-        Debug.Log($"손님({myData.npcName}): (카운터 도착) 여기요~ \"{currentOrder.drinkName}\" 주세요! (20초 대기)");
+        Debug.Log($"손님({myData.npcName}): \"{currentOrder.drinkName}\" 주문");
         StartCoroutine(PatienceTimer());
     }
 
@@ -121,10 +119,9 @@ public class CustomerController : MonoBehaviour
         isSitting = true;
         agent.enabled = false;
 
-        // [New] 앉는 애니메이션 켜기
         if (anim != null)
         {
-            anim.SetBool("IsWalking", false); // 혹시 켜져있을까봐 끄기
+            anim.SetBool("IsWalking", false);
             anim.SetBool("IsSitting", true);
         }
 
@@ -139,7 +136,7 @@ public class CustomerController : MonoBehaviour
             transform.rotation = mySeatPoint.rotation;
         }
 
-        Debug.Log($"손님({myData.npcName}): (착석 완료) 음료 기다리는 중...");
+        Debug.Log($"({myData.npcName}): 착석 완료");
     }
 
     private IEnumerator PatienceTimer()
@@ -159,7 +156,6 @@ public class CustomerController : MonoBehaviour
         isSitting = false;
         StopAllCoroutines();
 
-        // [New] 앉기 애니메이션 끄기 (일어나기)
         if (anim != null)
         {
             anim.SetBool("IsSitting", false);
@@ -176,8 +172,8 @@ public class CustomerController : MonoBehaviour
             mySpawner.ReturnSeat(mySeatPoint);
         }
 
-        if (isAngry) Debug.Log($"손님({myData.npcName}): 너무 늦어! (퇴장)");
-        else Debug.Log($"손님({myData.npcName}): 잘 가요~ (퇴장)");
+        if (isAngry) Debug.Log($"({myData.npcName}): 대기 시간이 지나 퇴장");
+        else Debug.Log($"({myData.npcName}) 퇴장");
 
         agent.SetDestination(exitPoint.position);
         Destroy(gameObject, 5.0f);
