@@ -11,8 +11,6 @@ public class PurchaseObjectInfo : MonoBehaviour
     [SerializeField]
     private Text objectName;
     [SerializeField]
-    private Text objectDisc;
-    [SerializeField]
     private Text objectPrice;
     [SerializeField]
     private SelectButton checkButton;
@@ -21,7 +19,6 @@ public class PurchaseObjectInfo : MonoBehaviour
     {
         objectImage.sprite = objectSO.objectSprite;
         objectName.text = $"{objectSO.objectName} {objectSO.quantity}°³";
-        objectDisc.text = objectSO.objectDisc;
         objectPrice.text = $"{objectSO.price.ToString()}¿ø";
         checkButton.onObjectSelected += SetObjectSelect;
     }

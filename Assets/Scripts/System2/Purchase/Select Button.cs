@@ -3,7 +3,8 @@ using UnityEngine.UI;
 
 public class SelectButton : MonoBehaviour
 {
-    private Text checkText;
+    [SerializeField]
+    private Image checkImage;
     private bool isChecked;
 
     public delegate void OnObjectSelected();
@@ -11,7 +12,6 @@ public class SelectButton : MonoBehaviour
 
     private void Start()
     {
-        checkText = GetComponentInChildren<Text>();
         InitCheckBtn();
 
         PurchaseManager.Instance.onPurchaseListInited += InitCheckBtn;
@@ -20,14 +20,14 @@ public class SelectButton : MonoBehaviour
     private void InitCheckBtn()
     {
         isChecked = false;
-        checkText.gameObject.SetActive(isChecked);
+        checkImage.gameObject.SetActive(isChecked);
     }
 
     public void OnCheckBtnClicked()
     {
         isChecked = !isChecked;
 
-        checkText.gameObject.SetActive(isChecked);
+        checkImage.gameObject.SetActive(isChecked);
 
         onObjectSelected?.Invoke();
     }

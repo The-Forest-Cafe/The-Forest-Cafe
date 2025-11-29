@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3bf0b6056d5eff4bbc1ab2fb4f54dfb, type: 3}
   m_Name: Crops_Cherry
   m_EditorClassIdentifier: 
-  objectSprite: {fileID: 0}
+  objectSprite: {fileID: 21300000, guid: 55e957c4931a06b438ea41d5556be109, type: 3}
   objectName: "\uC54C 3\uAC1C \uCCB4\uB9AC"
-  objectDisc: "\uC54C 3\uAC1C \uCCB4\uB9AC\uC785\uB2C8\uB2E4."
   quantity: 5
   price: 10
   isSelected: 0
