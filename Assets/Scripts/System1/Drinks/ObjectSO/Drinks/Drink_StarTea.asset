@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   recipeID: Starlight_tea
   drinkName: "\uBCC4\uBE5B \uC720\uC131\uCC28"
-  drinkIcon: {fileID: 21300000, guid: ae2ee451ca2af5f4b9dba6e973c47c95, type: 3}
+  drinkIcon: {fileID: 21300000, guid: 499d261362419e545aa4e681e5c4fdc9, type: 3}
   drinkPrefab: {fileID: 0}
   price: 0
   drinkTags: 

@@ -1670,39 +1670,6 @@ MonoBehaviour:
   m_IgnoreFromBuild: 0
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
---- !u!1 &1010686850 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3286775996368923033, guid: b86efce53d3f2914fa8ee2a29b9cf439, type: 3}
-  m_PrefabInstance: {fileID: 1177414027}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1010686854
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1010686850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c5863db4400f1544bcbc5d4d24330cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentMoney: 30
-  moneyText: {fileID: 1086027397}
-  onMoneyChanged:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &1086027397 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1083505444683490473, guid: b86efce53d3f2914fa8ee2a29b9cf439, type: 3}
-  m_PrefabInstance: {fileID: 1177414027}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1168226260 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5600855983995741558, guid: 4f6175a415eb6db42837ba32b95e7449, type: 3}
@@ -1823,10 +1790,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3286775996368923033, guid: b86efce53d3f2914fa8ee2a29b9cf439, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1010686854}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b86efce53d3f2914fa8ee2a29b9cf439, type: 3}
 --- !u!1001 &1466150941
 PrefabInstance:
@@ -1976,26 +1940,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: DrinkMaking
       objectReference: {fileID: 0}
-    - target: {fileID: 7942368655565703462, guid: 8c2bb832b793d4f488ed667b46dca4bf, type: 3}
-      propertyPath: m_LocalRotation.w
+    - target: {fileID: 4737861573792490440, guid: 8c2bb832b793d4f488ed667b46dca4bf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5763151938984110950, guid: 8c2bb832b793d4f488ed667b46dca4bf, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7942368655565703462, guid: 8c2bb832b793d4f488ed667b46dca4bf, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7942368655565703462, guid: 8c2bb832b793d4f488ed667b46dca4bf, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -6.200012
-      objectReference: {fileID: 0}
-    - target: {fileID: 7942368655565703462, guid: 8c2bb832b793d4f488ed667b46dca4bf, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -9.700012
-      objectReference: {fileID: 0}
-    - target: {fileID: 7942368655565703462, guid: 8c2bb832b793d4f488ed667b46dca4bf, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 7967490664017324718, guid: 8c2bb832b793d4f488ed667b46dca4bf, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 45441d4d78095154abaf7ad9afc2f9bc, type: 3}
     - target: {fileID: 8100544056113386634, guid: 8c2bb832b793d4f488ed667b46dca4bf, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2092,6 +2048,10 @@ PrefabInstance:
     - target: {fileID: 1095090535925477874, guid: 16a45cca4e90b3f419da007c0d2f6b38, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1907484205462704818, guid: 16a45cca4e90b3f419da007c0d2f6b38, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2263742397400071400, guid: 16a45cca4e90b3f419da007c0d2f6b38, type: 3}
       propertyPath: m_IsActive

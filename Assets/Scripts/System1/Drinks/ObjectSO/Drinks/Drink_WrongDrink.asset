@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83f115d3b45423a4e8af900515064316, type: 3}
   m_Name: Drink_WrongDrink
   m_EditorClassIdentifier: 
+  recipeID: 
   drinkName: "\uC774\uC0C1\uD55C \uC74C\uB8CC"
-  drinkIcon: {fileID: 0}
+  drinkIcon: {fileID: 21300000, guid: 7c4a7e8251896d1418a6b635c26cb75c, type: 3}
   drinkPrefab: {fileID: 0}
+  price: 0
+  drinkTags: 
   baseIngredient: {fileID: 0}
   baseWay: {fileID: 0}
   ingredients: []

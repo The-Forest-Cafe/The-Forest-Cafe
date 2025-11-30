@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   recipeID: Cosmic_Bloom
   drinkName: "\uCF54\uC2A4\uBBF9 \uBE14\uB8F8"
-  drinkIcon: {fileID: 0}
+  drinkIcon: {fileID: 21300000, guid: 44e65f2b024811840ae0e28143abca42, type: 3}
   drinkPrefab: {fileID: 0}
   price: 0
   drinkTags: 
