@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42b8496f890d39e44b7b4170c7ade305, type: 3}
   m_Name: General 3
   m_EditorClassIdentifier: 
-  npcName: "\uC77C\uBC18 \uC190\uB2D82"
+  npcName: "\uC77C\uBC18 \uC190\uB2D84"
   npcPrefab: {fileID: 5124813566818481348, guid: 4749b0e15099c2145b57456e73db7006, type: 3}
   type: 0
   possibleMenus:

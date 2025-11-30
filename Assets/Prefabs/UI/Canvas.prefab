@@ -400,10 +400,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: RecipeBook Panel
       objectReference: {fileID: 0}
-    - target: {fileID: 60402834367070767, guid: 8ff3d2c6ce9c89041bb95bb06c217d4c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2957535897622052268, guid: 8ff3d2c6ce9c89041bb95bb06c217d4c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -841,10 +837,6 @@ PrefabInstance:
     - target: {fileID: 6839341406603630686, guid: 619289bca11b4074fb2d9a8d9ddaa877, type: 3}
       propertyPath: m_Name
       value: Dialog Panel
-      objectReference: {fileID: 0}
-    - target: {fileID: 6839341406603630686, guid: 619289bca11b4074fb2d9a8d9ddaa877, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7663264241817484515, guid: 619289bca11b4074fb2d9a8d9ddaa877, type: 3}
       propertyPath: m_Pivot.x

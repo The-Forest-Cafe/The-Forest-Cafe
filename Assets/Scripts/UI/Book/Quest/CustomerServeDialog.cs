@@ -1,26 +1,25 @@
 using System.Linq;
 using UnityEngine;
 
+[System.Serializable]
+public class CustomerPanelByName
+{
+    [Header("손님 이름 (myData.npcName 과 일치)")]
+    public string customerName;      
+    [Header("이 손님 전용 대화 패널 이미지")]
+    public Sprite panelSprite;
+}
+
 public class CustomerServeDialog : MonoBehaviour
 {
     public static CustomerServeDialog Instance { get; private set; }
 
-    [System.Serializable]
-    public class CustomerPanel
-    {
-        [Header("이 손님 오브젝트")]
-        public GameObject customer;      // 해당 손님 NPC
-
-        [Header("이 손님 전용 대화 패널 이미지")]
-        public Sprite panelSprite;       // 이 손님의 패널 1개
-    }
-
     [Header("공통 랜덤 대사 (모든 일반 손님 공용)")]
     [TextArea(2, 3)]
-    public string[] randomLines;         // 7개 정도 공통 대사
+    public string[] randomLines;         //공통 대사
 
     [Header("손님별 패널 매핑")]
-    public CustomerPanel[] customers;    // 4명 손님 등록
+    public CustomerPanelByName[] customers;    //4명 손님 등록
 
     [Header("매핑 안 됐을 때 사용할 기본 패널 (선택)")]
     public Sprite defaultPanelSprite;
@@ -36,34 +35,43 @@ public class CustomerServeDialog : MonoBehaviour
     }
 
     /// <summary>
-    /// 이 손님에게 서빙에 성공했을 때 호출
+    /// 일반 손님에게 서빙 성공했을 때 호출.
+    /// customerName : npc.myData.npcName
     /// </summary>
-    public void ShowRandomServeDialog(GameObject customerObj)
+    public void ShowRandomServeDialog(string customerName)
     {
         if (DialogManager.Instance == null)
         {
-            Debug.LogWarning("GenericCustomerDialogManager : DialogManager.Instance 없음");
+            Debug.LogWarning("CustomerServeDialog : DialogManager 없음");
             return;
         }
 
-        if (customerObj == null)
+        if (randomLines == null || randomLines.Length == 0)
         {
-            Debug.LogWarning("GenericCustomerDialogManager : customerObj 가 null임");
+            Debug.LogWarning("CustomerServeDialog : randomLines 비어있음");
             return;
         }
 
-        // 1) 손님 오브젝트에 해당하는 패널 찾기
-        var data = customers.FirstOrDefault(c => c.customer == customerObj);
+        //1) 손님 이름으로 패널 찾기
+        Sprite panel = defaultPanelSprite;
+        if (!string.IsNullOrEmpty(customerName))
+        {
+            foreach (var c in customers)
+            {
+                if (c != null && c.customerName == customerName)
+                {
+                    if (c.panelSprite != null)
+                        panel = c.panelSprite;
+                    break;
+                }
+            }
+        }
 
-        Sprite panelSprite = defaultPanelSprite;
-        if (data != null && data.panelSprite != null)
-            panelSprite = data.panelSprite;
-
-        // 2) 공통 랜덤 대사에서 한 줄 뽑기
+        //2) 공통 랜덤 대사 하나 뽑기
         int idx = Random.Range(0, randomLines.Length);
         string line = randomLines[idx];
 
-        // 3) 그 패널 + 랜덤 한 줄로 대화창 띄우기
-        DialogManager.Instance.Show(new string[] { line }, panelSprite);
+        //3) 패널 + 랜덤 대사로 대화창 띄우기
+        DialogManager.Instance.Show(new string[] { line }, panel);
     }
 }
