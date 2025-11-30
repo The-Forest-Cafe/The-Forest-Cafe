@@ -7,7 +7,9 @@ public class OrderManager : MonoBehaviour
     private List<OrderData> currentOrders = new List<OrderData>();
 
     public delegate void OnOrderAdded(OrderData order);
+    public delegate void OnOrderRemoved(OrderData order);
     public event OnOrderAdded onOrderAdded;
+    public event OnOrderRemoved onOrderRemoved;
 
     private void Awake()
     {
@@ -27,6 +29,12 @@ public class OrderManager : MonoBehaviour
     {
         currentOrders.Add(order);
         onOrderAdded?.Invoke(order);    // UI 쪽에 주문 추가를 알림
+    }
+
+    public void RemoveOrder(OrderData order)
+    {
+        currentOrders.Remove(order);
+        onOrderRemoved?.Invoke(order);
     }
 
     public List<OrderData> GetOrders()

@@ -9,10 +9,12 @@ public class OrderUI : MonoBehaviour
 
     [SerializeField]
     private List<Sprite> orderSprites = new();
+    private Dictionary<string, GameObject> orderPrefabs = new();
 
     private void Start()
     {
         OrderManager.Instance.onOrderAdded += HandleNewOrder;
+        OrderManager.Instance.onOrderRemoved += HandleRemoveOrder;
     }
 
     private void HandleNewOrder(OrderData order)
@@ -20,8 +22,14 @@ public class OrderUI : MonoBehaviour
         GameObject newOrderUI = Instantiate(orderPrefab, orderParent);
         string drinkName = ChangeDrinkName(order);
 
-        Debug.Log(drinkName);
         newOrderUI.GetComponent<Image>().sprite = SearchSprite(drinkName);
+        orderPrefabs.Add(drinkName, newOrderUI);
+    }
+
+    private void HandleRemoveOrder(OrderData order)
+    {
+        string drinkName = ChangeDrinkName(order);
+        orderPrefabs.Remove(drinkName);
     }
 
     private string ChangeDrinkName(OrderData order)
