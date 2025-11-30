@@ -22,6 +22,9 @@ public class DrinkMakingManager : MonoBehaviour
     public GameObject ingredientSelectionPanel;
     public Image drinkResultImage;
 
+    [Header("실패 화면")]
+    public GameObject failedResultPanel;
+
     [Header("Data")]
     public List<Recipe> allRecipes;
     public Recipe failedDrink;
@@ -64,6 +67,9 @@ public class DrinkMakingManager : MonoBehaviour
 
         if (drinkResultImage != null)
             drinkResultImage.gameObject.SetActive(false);
+
+        if (failedResultPanel != null)
+            failedResultPanel.SetActive(false);
 
         UpdateIngredientCounts();
     }
@@ -199,23 +205,25 @@ public class DrinkMakingManager : MonoBehaviour
         baseSelectionPanel.SetActive(false);
         ingredientSelectionPanel.SetActive(false);
 
-        if (drinkResultImage != null && result.drinkIcon != null)
+        bool isFailed = (result.drinkName == "이상한 음료");
+
+        if (isFailed)
         {
-            drinkResultImage.sprite = result.drinkIcon;
-            drinkResultImage.gameObject.SetActive(true);
+            if (failedResultPanel != null)
+            {
+                failedResultPanel.SetActive(true);
+            }
+        }
+        else
+        {
+            if (drinkResultImage != null && result.drinkIcon != null)
+            {
+                drinkResultImage.sprite = result.drinkIcon;
+                drinkResultImage.gameObject.SetActive(true);
+            }
         }
 
         yield return new WaitForSeconds(2.0f);
-
-        if (playerHand != null && result.drinkPrefab != null)
-        {
-            foreach (Transform child in playerHand.transform)
-                Destroy(child.gameObject);
-
-            GameObject obj = Instantiate(result.drinkPrefab, playerHand.transform);
-            obj.transform.localPosition = Vector3.zero;
-            obj.transform.localRotation = Quaternion.identity;
-        }
 
         ClosePanel();
     }

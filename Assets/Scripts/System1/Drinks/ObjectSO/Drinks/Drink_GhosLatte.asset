@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   recipeID: Ghost_Latte
   drinkName: "\uC720\uB839 \uC2AC\uD514\uC774 \uB77C\uB5BC"
-  drinkIcon: {fileID: 0}
+  drinkIcon: {fileID: 21300000, guid: c9dc133e8c3a37a45a912480ae0bdc21, type: 3}
   drinkPrefab: {fileID: 0}
   price: 0
   drinkTags: 

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   recipeID: Octopus_Dream
   drinkName: "\uBB38\uC5B4\uC758 \uAFC8 \uC2A4\uBB34\uB514"
-  drinkIcon: {fileID: 0}
+  drinkIcon: {fileID: 21300000, guid: 17d7e85374b2cf745896441b4b499325, type: 3}
   drinkPrefab: {fileID: 0}
   price: 0
   drinkTags: 
