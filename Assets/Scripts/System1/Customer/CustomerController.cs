@@ -233,7 +233,7 @@ public class CustomerController : MonoBehaviour
     public void OnDrinkServed()
     {
         StopAllCoroutines();
-
+        MoneyManager.Instance.AddMoney(currentOrder.price);
         // ¼­ºù ¼º°ø
         StartCoroutine(ShowTimedBubble(bubbleHappy, 4.0f));
 
@@ -289,7 +289,7 @@ public class CustomerController : MonoBehaviour
             order.drinkName = currentOrder.drinkName;
             OrderManager.Instance.RemoveOrder(order);
 
-            ScoreManager.Instance.ApplyPenalty(PenaltyType.CustomerLeave, 10);
+            ScoreManager.Instance.ApplyPenalty(PenaltyType.CustomerLeave, 2);
             SFXManager.Instance.Play("fail_customer"); //¼Õ´Ô ÀÌÅ», Àß¸øµÈ ¼­ºù
 
             Debug.Log($"({myData.npcName}): ´ë±â ½Ã°£ÀÌ Áö³ª ÅðÀå");

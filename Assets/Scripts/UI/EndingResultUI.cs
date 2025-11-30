@@ -19,7 +19,7 @@ public class EndingResultUI : MonoBehaviour
 
     [Header("씬 이름 설정")]
     [SerializeField] string startSceneName = "StartScene";   //완전 처음으로
-    [SerializeField] string continueSceneName = "MainScene"; //이어하기로 갈 씬(예: 메인 카페 씬)
+    [SerializeField] string continueSceneName = "GameScene"; //이어하기로 갈 씬(예: 메인 카페 씬)
 
     void Awake()
     {
