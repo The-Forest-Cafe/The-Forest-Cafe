@@ -39,6 +39,9 @@ public class MoneyManager : MonoBehaviour
             currentMoney -= amount;
             onMoneyChanged.Invoke(currentMoney);
             UpdateMoneyUI();
+
+            SFXManager.Instance.Play("money");
+            
             Debug.Log("구매 성공");
 
             return true;
@@ -55,6 +58,8 @@ public class MoneyManager : MonoBehaviour
         currentMoney += amount;
         onMoneyChanged.Invoke(currentMoney);
         UpdateMoneyUI();
+
+        SFXManager.Instance.Play("money");
     }
 
     private void UpdateMoneyUI()

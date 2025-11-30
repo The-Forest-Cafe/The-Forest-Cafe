@@ -55,6 +55,7 @@ public class RecipeSlotUI : MonoBehaviour
     {
         if (RecipeManager.Instance.TryUnlockRecipe(recipeId))
         {
+            SFXManager.Instance.Play("solve");
             //성공 시 UI 갱신
             Refresh();
         }
