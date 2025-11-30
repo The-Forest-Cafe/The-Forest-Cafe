@@ -119,7 +119,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9171391723001929130}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2349432441855979630, guid: 6906489d3d9d696438074d62d7ccff58, type: 3}
+        m_TargetAssemblyTypeName: SFXManager, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: button_popup
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &193345480755273370
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,7 +482,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5923082725906740857}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2349432441855979630, guid: 6906489d3d9d696438074d62d7ccff58, type: 3}
+        m_TargetAssemblyTypeName: SFXManager, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: button_popup
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6529583990072826622
 GameObject:
   m_ObjectHideFlags: 0

@@ -613,18 +613,14 @@ PrefabInstance:
       propertyPath: questBookPanel
       value: 
       objectReference: {fileID: 7134050849502797208}
-    - target: {fileID: 2893590757136106374, guid: c9e0dd1fd2d9a9745af0810f9ed4f921, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+    - target: {fileID: 875845426635208221, guid: c9e0dd1fd2d9a9745af0810f9ed4f921, type: 3}
+      propertyPath: recipeBookPanel
       value: 
       objectReference: {fileID: 1095090535925477874}
     - target: {fileID: 6278316986217101327, guid: c9e0dd1fd2d9a9745af0810f9ed4f921, type: 3}
       propertyPath: m_Name
       value: Menu Panel
       objectReference: {fileID: 0}
-    - target: {fileID: 6314706598539893645, guid: c9e0dd1fd2d9a9745af0810f9ed4f921, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 8948558001524605389}
     - target: {fileID: 8693844350351168202, guid: c9e0dd1fd2d9a9745af0810f9ed4f921, type: 3}
       propertyPath: m_Pivot.x
       value: 1

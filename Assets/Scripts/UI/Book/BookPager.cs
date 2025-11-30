@@ -33,6 +33,15 @@ public class BookPager : MonoBehaviour
         nextButton.interactable = currentIndex < spreads.Length - 1;
     }
 
-    void OnPrev() => ShowPage(currentIndex - 1);
-    void OnNext() => ShowPage(currentIndex + 1);
+    void OnPrev()
+    {
+        SFXManager.Instance.Play("book");
+        ShowPage(currentIndex - 1);
+    }
+
+    void OnNext()
+    {
+        SFXManager.Instance.Play("book");
+        ShowPage(currentIndex + 1);
+    }
 }

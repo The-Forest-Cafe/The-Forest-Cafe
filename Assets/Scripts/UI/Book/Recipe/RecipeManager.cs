@@ -135,6 +135,8 @@ public class RecipeManager : MonoBehaviour
         {
             finalRewardGiven = true;
 
+            SFXManager.Instance.Play("final_solve");
+
             if (IngredientUnlockManager.Instance != null && finalRewardIngredientIds != null)
             {
                 foreach (var id in finalRewardIngredientIds)

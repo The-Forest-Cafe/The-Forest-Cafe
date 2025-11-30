@@ -65,6 +65,8 @@ public class EndingResultUI : MonoBehaviour
         if (panelRoot)
             panelRoot.SetActive(true);
 
+        BGMManager.Instance.PlayEnding();
+
         // 게임 일시정지
         Time.timeScale = 0f;
     }
@@ -107,5 +109,7 @@ public class EndingResultUI : MonoBehaviour
             panelRoot.SetActive(false);
 
         Time.timeScale = 1f;
+
+        BGMManager.Instance.PlayGame();
     }
 }
