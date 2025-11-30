@@ -27,11 +27,11 @@ public class DrinkMakingManager : MonoBehaviour
     public Recipe failedDrink;
     public GameObject playerHand;
 
-    [Header("--- [Team Request] Inventory & Result ---")]
+    [Header("인벤토리")]
     public Recipe currentDrink;
     public PlayerInventory playerInventory;
 
-    [Header("--- [UI Update] 재료 개수 표시 설정 ---")]
+    [Header("재료 개수")]
     public List<IngredientUIItem> ingredientUIs;
 
     private Ingredient currentBase;
