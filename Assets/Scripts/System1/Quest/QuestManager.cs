@@ -69,6 +69,7 @@ public class QuestManager : MonoBehaviour
                 bool isJustFinished = false;
                 if (quest.currentCount >= quest.goalCount && !quest.isCompleted)
                 {
+                    SFXManager.Instance.Play("clear"); //퀘스트 클리어
                     quest.isCompleted = true;
                     isJustFinished = true;
                     OnQuestCompleted?.Invoke(quest);
