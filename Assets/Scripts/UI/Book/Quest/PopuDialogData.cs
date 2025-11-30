@@ -5,6 +5,8 @@ public class PopuQuestProgressDialog
 {
     public string questID;  //예: "POPU_STAR_5", "POPU_GHOST_5", "POPU_HOT_5"
 
+    public Sprite dialogSprite;
+
     [TextArea(2, 4)] public string[] linesAt0;          //0잔
     [TextArea(2, 4)] public string[] linesAt1;          //1잔
     [TextArea(2, 4)] public string[] linesAt2;          //2잔
@@ -42,7 +44,10 @@ public class PopuQuestProgressDialog
                 return linesAt5;
         }
     }
+
 }
+
+
 
 [CreateAssetMenu(menuName = "Dialog/Popu Dialog")]
 public class PopuDialogData : ScriptableObject
@@ -60,6 +65,21 @@ public class PopuDialogData : ScriptableObject
         }
 
         Debug.LogWarning($"PopuMultiQuestDialogData: questID {questID} 에 해당하는 대사가 없음");
+        return null;
+    }
+
+    public Sprite GetSprite(string questID, int servedCount, bool isCleared)
+    {
+        foreach (var q in quests)
+        {
+            if (q.questID == questID)
+            {
+                // 필요하면 여기서 servedCount/isCleared에 따라
+                // 다른 스프라이트 쓰게도 만들 수 있음.
+                // 지금은 "퀘스트당 하나의 스킨"만 쓴다고 가정.
+                return q.dialogSprite;
+            }
+        }
         return null;
     }
 }
