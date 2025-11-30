@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class StartMenuUI : MonoBehaviour
 {
     [Header("시작할 게임 씬 이름")]
-    [SerializeField] string gameSceneName = "MainScene";
+    [SerializeField] string gameSceneName = "GameScene";
     //실제 게임 씬 이름으로 변경해서 사용하기
 
     //시작 버튼에서 호출

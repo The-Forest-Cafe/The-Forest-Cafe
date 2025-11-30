@@ -212,7 +212,7 @@ public class DrinkMakingManager : MonoBehaviour
             if (failedResultPanel != null)
             {
                 SFXManager.Instance.Play("fail_make"); //잘못된 음료 제작
-                ScoreManager.Instance.ApplyPenalty(PenaltyType.WrongDrink, 7);
+                ScoreManager.Instance.ApplyPenalty(PenaltyType.WrongDrink, 1);
                 failedResultPanel.SetActive(true);
             }
         }
