@@ -59,22 +59,22 @@ public class OrderUI : MonoBehaviour
         switch (order.drinkName)
         {
             case "코스믹 블룸":
-                order.customerName = "Cosmic";
+                order.drinkName = "Cosmic";
                 break;
             case "유령 슬픔이 라떼":
-                order.customerName = "Ghost";
+                order.drinkName = "Ghost";
                 break;
             case "문어의 꿈 스무디":
-                order.customerName = "Octopus";
+                order.drinkName = "Octopus";
                 break;
             case "심해 진주 버블티":
-                order.customerName = "DeapSea";
+                order.drinkName = "DeapSea";
                 break;
             case "별빛 유성차":
-                order.customerName = "Star";
+                order.drinkName = "Star";
                 break;
             case "이상한 음료":
-                order.customerName = "Otter";
+                order.drinkName = "Otter";
                 break;
         }
 

@@ -487,6 +487,7 @@ GameObject:
   - component: {fileID: 3758956953902304249}
   - component: {fileID: 4704209785738185009}
   - component: {fileID: 3234031084518214469}
+  - component: {fileID: 3818041629013193287}
   m_Layer: 5
   m_Name: Money Panel
   m_TagString: Untagged
@@ -552,6 +553,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3818041629013193287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3286775996368923033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c5863db4400f1544bcbc5d4d24330cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentMoney: 30
+  moneyText: {fileID: 1083505444683490473}
+  onMoneyChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3996458077933227447
 GameObject:
   m_ObjectHideFlags: 0
