@@ -8,6 +8,9 @@ public class PopuDialogController : MonoBehaviour
     [Header("Talk Range")]
     public float talkRange = 3f;
 
+    [Header("포푸 기본 대화창 이미지 (퀘스트별 스킨 없을 때)")]
+    public Sprite defaultDialogSprite;
+
     Transform player;
 
     void Start()
@@ -54,5 +57,15 @@ public class PopuDialogController : MonoBehaviour
         }
 
         DialogManager.Instance.Show(lines);
+
+        // 2) 이 퀘스트/진행도에 맞는 대화창 이미지 가져오기
+        Sprite sprite = dialogData.GetSprite(questID, servedCount, isCleared);
+
+        // 3) 없으면 포푸 기본 스킨 사용
+        if (sprite == null)
+            sprite = defaultDialogSprite;
+
+        // 4) 스킨까지 함께 넘겨서 대화창 띄우기
+        DialogManager.Instance.Show(lines, sprite);
     }
 }
