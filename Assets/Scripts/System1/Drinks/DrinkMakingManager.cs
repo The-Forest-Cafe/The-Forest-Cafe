@@ -211,6 +211,7 @@ public class DrinkMakingManager : MonoBehaviour
         {
             if (failedResultPanel != null)
             {
+                ScoreManager.Instance.ApplyPenalty(PenaltyType.WrongDrink, 7);
                 failedResultPanel.SetActive(true);
             }
         }

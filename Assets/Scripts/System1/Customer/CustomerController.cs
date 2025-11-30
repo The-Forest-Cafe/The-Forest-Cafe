@@ -289,6 +289,8 @@ public class CustomerController : MonoBehaviour
             order.drinkName = currentOrder.drinkName;
             OrderManager.Instance.RemoveOrder(order);
 
+            ScoreManager.Instance.ApplyPenalty(PenaltyType.CustomerLeave, 10);
+
             Debug.Log($"({myData.npcName}): 대기 시간이 지나 퇴장");
             StartCoroutine(ShowTimedBubble(bubbleAngry, 3.0f));
         }
