@@ -4,6 +4,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private float v = 0.0f;
     private Rigidbody rb;
+    private Animator anim;
 
     public Camera mapCamera;
     public LayerMask groundMask;
@@ -12,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
     }
@@ -19,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         v = Input.GetAxis("Vertical");
+        anim.SetFloat("IsWalking", v);
     }
 
     private void FixedUpdate()

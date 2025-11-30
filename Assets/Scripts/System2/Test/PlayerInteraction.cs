@@ -75,6 +75,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (npc.currentOrder == drink)
         {
+            npc.OnDrinkServed();
             money.AddMoney(npc.currentOrder.price);
             QuestManager.Instance.UpdateQuestProgress(npc, drink);
         }
