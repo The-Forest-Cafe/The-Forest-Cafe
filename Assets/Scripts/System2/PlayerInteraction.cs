@@ -1,18 +1,26 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
     public MoneyManager money;
 
+    // 주문 받기/음료 전달
     public float interactRange = 2f;
     public bool hasDrink = false;
     public LayerMask npcLayer;
 
+    // 음료 제작/구매창 패널 관리
     public Camera mapCamera;
     public LayerMask targetLayers;
     public GameObject makeDrinkPanel;
     public GameObject purchasePanel;
+
+    // 음료 모델링
+    [SerializeField]
+    private List<GameObject> drinks = new();
+    private GameObject currentModeling = null;
 
     private void Update()
     {
@@ -75,6 +83,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (npc.currentOrder == drink)
         {
+            npc.OnDrinkServed();
             money.AddMoney(npc.currentOrder.price);
             QuestManager.Instance.UpdateQuestProgress(npc, drink);
         }
@@ -84,5 +93,28 @@ public class PlayerInteraction : MonoBehaviour
         order.drinkName = npc.currentOrder.drinkName;
 
         OrderManager.Instance.RemoveOrder(order);
+        RemoveDrinkModel();
+    }
+
+    public void SetDrinkModel()
+    {
+        // 플레이어 손에 모델링 생성
+        foreach (var drink in drinks)
+        {
+            Debug.Log(DrinkMakingManager.Instance.currentDrink.recipeID);
+            Debug.Log(drink.name);
+
+            if (DrinkMakingManager.Instance.currentDrink.recipeID == drink.name)
+            {
+                drink.SetActive(true);
+                currentModeling = drink;
+            }
+        }
+    }
+
+    public void RemoveDrinkModel()
+    {
+        hasDrink = false;
+        currentModeling.SetActive(false);
     }
 }

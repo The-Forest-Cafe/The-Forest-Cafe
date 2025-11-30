@@ -4,6 +4,8 @@ public class PlayerMovement : MonoBehaviour
 {
     private float v = 0.0f;
     private Rigidbody rb;
+    private Animator anim;
+    private PlayerInteraction playerInteraction;
 
     public Camera mapCamera;
     public LayerMask groundMask;
@@ -12,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        playerInteraction = GetComponent<PlayerInteraction>();
+        anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
     }
@@ -19,6 +23,17 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         v = Input.GetAxis("Vertical");
+
+        if (!playerInteraction.hasDrink)
+        {
+            anim.SetFloat("IsWalking", v);
+            anim.SetFloat("HasDrink", 0f);
+        }
+        else
+        {
+            anim.SetFloat("IsWalking", 0f);
+            anim.SetFloat("HasDrink", v);
+        }
     }
 
     private void FixedUpdate()

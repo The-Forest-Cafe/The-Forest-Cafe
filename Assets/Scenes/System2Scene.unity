@@ -318,6 +318,16 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 6616665492874899876, guid: 9bb4c5d0dad25984893df67291474fb1, type: 3}
   m_PrefabInstance: {fileID: 412989898}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &558147105 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3306351891485339426, guid: a2bb0ffa781f63341b2214a7f0073676, type: 3}
+  m_PrefabInstance: {fileID: 815443321643649204}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &772167527 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 933911015052589593, guid: a2bb0ffa781f63341b2214a7f0073676, type: 3}
+  m_PrefabInstance: {fileID: 815443321643649204}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &783913183 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 945716544994252609, guid: a2bb0ffa781f63341b2214a7f0073676, type: 3}
@@ -333,6 +343,16 @@ MonoBehaviour:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2199151794781103544, guid: 8c2bb832b793d4f488ed667b46dca4bf, type: 3}
   m_PrefabInstance: {fileID: 3350359813799443274}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &803935938 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2294511534164084999, guid: a2bb0ffa781f63341b2214a7f0073676, type: 3}
+  m_PrefabInstance: {fileID: 815443321643649204}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &862026323 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2686274512631787061, guid: a2bb0ffa781f63341b2214a7f0073676, type: 3}
+  m_PrefabInstance: {fileID: 815443321643649204}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1177414027
 PrefabInstance:
@@ -512,6 +532,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4754ece7c8d69dc44a9e65d95ef5dd9a, type: 3}
+--- !u!1 &1628972299 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3876196094899128932, guid: a2bb0ffa781f63341b2214a7f0073676, type: 3}
+  m_PrefabInstance: {fileID: 815443321643649204}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1887922703
 GameObject:
   m_ObjectHideFlags: 0
@@ -620,6 +645,30 @@ PrefabInstance:
       propertyPath: makeDrinkPanel
       value: 
       objectReference: {fileID: 791704391}
+    - target: {fileID: 731875255129499658, guid: a2bb0ffa781f63341b2214a7f0073676, type: 3}
+      propertyPath: drinks.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 731875255129499658, guid: a2bb0ffa781f63341b2214a7f0073676, type: 3}
+      propertyPath: 'drinks.Array.data[0]'
+      value: 
+      objectReference: {fileID: 558147105}
+    - target: {fileID: 731875255129499658, guid: a2bb0ffa781f63341b2214a7f0073676, type: 3}
+      propertyPath: 'drinks.Array.data[1]'
+      value: 
+      objectReference: {fileID: 772167527}
+    - target: {fileID: 731875255129499658, guid: a2bb0ffa781f63341b2214a7f0073676, type: 3}
+      propertyPath: 'drinks.Array.data[2]'
+      value: 
+      objectReference: {fileID: 803935938}
+    - target: {fileID: 731875255129499658, guid: a2bb0ffa781f63341b2214a7f0073676, type: 3}
+      propertyPath: 'drinks.Array.data[3]'
+      value: 
+      objectReference: {fileID: 862026323}
+    - target: {fileID: 731875255129499658, guid: a2bb0ffa781f63341b2214a7f0073676, type: 3}
+      propertyPath: 'drinks.Array.data[4]'
+      value: 
+      objectReference: {fileID: 1628972299}
     - target: {fileID: 3461123984581910380, guid: a2bb0ffa781f63341b2214a7f0073676, type: 3}
       propertyPath: m_Name
       value: Player
@@ -684,7 +733,7 @@ PrefabInstance:
     - target: {fileID: 208977138799493496, guid: 8c2bb832b793d4f488ed667b46dca4bf, type: 3}
       propertyPath: playerInventory
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 783913183}
     - target: {fileID: 1745490472308000680, guid: 8c2bb832b793d4f488ed667b46dca4bf, type: 3}
       propertyPath: m_Name
       value: DrinkMaking
