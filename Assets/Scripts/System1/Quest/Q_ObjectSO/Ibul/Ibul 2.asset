@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d58804825151fae40b4f307df0663b58, type: 3}
   m_Name: Ibul 2
   m_EditorClassIdentifier: 
-  questTitle: "\uC774\uBD88 \uD018\uC2A4\uD2B82"
-  description: "\uC774\uBD88 \uD018\uC2A4\uD2B82"
+  questID: EEBUL_STAR_2
+  questTitle: "\uC774\uBD88\uC5D0\uAC8C \uBCC4\uBE5B \uC720\uC131\uCC28 2\uC794 \uD314\uAE30"
+  description: "\uC774\uBD88\uC5D0\uAC8C \uBCC4\uBE5B \uC720\uC131\uCC28 2\uC794
+    \uD314\uAE30"
   targetCustomer: {fileID: 11400000, guid: 5680d180ba432f74c81a5c21bcd8ab33, type: 2}
   targetRecipe: {fileID: 11400000, guid: 68dae3f39bc39b9498bbffa636fffcf9, type: 2}
   targetTag: 0
   goalCount: 2
-  currentCount: 0
-  isCompleted: 0
+  currentCount: 2
+  isCompleted: 1

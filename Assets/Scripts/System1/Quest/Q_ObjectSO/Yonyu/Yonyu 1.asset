@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d58804825151fae40b4f307df0663b58, type: 3}
   m_Name: Yonyu 1
   m_EditorClassIdentifier: 
-  questTitle: "\uC5F0\uC720 \uD018\uC2A4\uD2B81"
-  description: "\uC5F0\uC720 \uD018\uC2A4\uD2B81"
+  questID: YONYU_STAR_4
+  questTitle: "\uC5F0\uC720\uC5D0\uAC8C \uBCC4\uBE5B \uC720\uC131\uCC28 4\uC794 \uD314\uAE30"
+  description: "\uC5F0\uC720\uC5D0\uAC8C \uBCC4\uBE5B \uC720\uC131\uCC28 4\uC794
+    \uD314\uAE30"
   targetCustomer: {fileID: 11400000, guid: d0192cb3accb97c4c902c615e7afbcfe, type: 2}
   targetRecipe: {fileID: 11400000, guid: 68dae3f39bc39b9498bbffa636fffcf9, type: 2}
   targetTag: 0
   goalCount: 4
-  currentCount: 0
+  currentCount: 1
   isCompleted: 0
