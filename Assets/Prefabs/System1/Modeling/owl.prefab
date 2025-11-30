@@ -925,7 +925,7 @@ GameObject:
   - component: {fileID: 7514865755270402221}
   - component: {fileID: 5575865800633738240}
   - component: {fileID: -5045224248369572222}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: owl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
