@@ -4,7 +4,7 @@ using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
-    public static AudioManager I {  get; private set; }
+    public static AudioManager Instance {  get; private set; }
 
     [Header("Mixer")]
     [SerializeField] AudioMixer mixer;
@@ -17,12 +17,12 @@ public class AudioManager : MonoBehaviour
 
     void Awake()
     {
-        if(I != null)
+        if(Instance != null)
         {
             Destroy(gameObject);
             return;
         }
-        I = this;
+        Instance = this;
         DontDestroyOnLoad(gameObject);
 
         float bgm = PlayerPrefs.GetFloat(KEY_BGM, 0.8f);
@@ -31,6 +31,7 @@ public class AudioManager : MonoBehaviour
         SetSfx01(sfx, save: false);
 
     }
+
 
     public void SetBgm01(float v, bool save = true)
     {
