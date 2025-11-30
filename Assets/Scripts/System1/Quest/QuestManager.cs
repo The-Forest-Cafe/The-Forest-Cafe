@@ -9,6 +9,12 @@ public class QuestManager : MonoBehaviour
     [Header("현재 활성화된 퀘스트 목록")]
     public List<QuestData> activeQuests;
 
+    [Header("대사 컨트롤러")]
+    public PopuDialogController popuController;   
+    public NPCDialogController eebulController;   
+    public NPCDialogController yonyuController;  
+    public NPCDialogController baneulController;  
+
     public event Action<QuestData> OnQuestUpdated;
     public event Action<QuestData> OnQuestCompleted;
 
@@ -20,60 +26,92 @@ public class QuestManager : MonoBehaviour
 
     private void Start()
     {
-        // 게임 시작 시 초기화
         foreach (var quest in activeQuests)
         {
             if (quest != null) quest.ResetProgress();
         }
     }
 
-    //서빙
-    public void UpdateQuestProgress(CustomerData customer, Recipe servedDrink)
+    public void UpdateQuestProgress(CustomerController customerInstance, Recipe servedDrink)
     {
-        Debug.Log($"[퀘스트 검사] 손님: {customer.npcName}, 음료: {servedDrink.drinkName}");
+        CustomerData customerData = customerInstance.myData;
+        Debug.Log($"손님: {customerData.npcName}, 음료: {servedDrink.drinkName}");
 
+        //일반 손님
+        if (customerData.type == CustomerType.General)
+        {
+            var dialog = customerInstance.GetComponent<CustomerServeDialog>();
+            if (dialog != null)
+            {
+              //  dialog.OnServeSuccess();
+            }
+            return;
+        }
+
+
+        //NPC
         foreach (var quest in activeQuests)
         {
             if (quest.isCompleted) continue;
 
-            if (quest.targetCustomer != null && quest.targetCustomer != customer) continue;
+            if (quest.targetCustomer != null && quest.targetCustomer != customerData) continue;
 
-            bool isMatch = false;
+            bool isMatch = CheckCondition(quest, servedDrink);
 
-            // 조건 확인
-            if (quest.targetRecipe != null)
-            {
-                if (quest.targetRecipe == servedDrink) isMatch = true;
-            }
-            else if (quest.targetTag != DrinkTag.None)
-            {
-                if (servedDrink.drinkTags.Contains(quest.targetTag)) isMatch = true;
-            }
-            else
-            {
-                isMatch = true; // NPC만 맞으면 통과
-            }
-
-            // 조건 달성
             if (isMatch)
             {
+                // 카운트 증가
                 quest.currentCount++;
-                Debug.Log($"퀘스트 진행 [{quest.questTitle}] {quest.currentCount}/{quest.goalCount}");
+                Debug.Log($"퀘스트 진행! ID:{quest.questID} ({quest.currentCount}/{quest.goalCount})");
 
                 OnQuestUpdated?.Invoke(quest);
 
-                if (quest.currentCount >= quest.goalCount)
+                bool isJustFinished = false;
+                if (quest.currentCount >= quest.goalCount && !quest.isCompleted)
                 {
-                    CompleteQuest(quest);
+                    quest.isCompleted = true;
+                    isJustFinished = true;
+                    OnQuestCompleted?.Invoke(quest);
                 }
+
+                //NPC별 대사
+                HandleDialogInteraction(customerData.npcName, quest, isJustFinished);
             }
         }
     }
 
-    private void CompleteQuest(QuestData quest)
+    private bool CheckCondition(QuestData quest, Recipe servedDrink)
     {
-        quest.isCompleted = true;
-        Debug.Log($"퀘스트 완료 [{quest.questTitle}]");
-        OnQuestCompleted?.Invoke(quest);
+        if (quest.targetRecipe != null)
+            return quest.targetRecipe == servedDrink;
+        else if (quest.targetTag != DrinkTag.None)
+            return servedDrink.drinkTags.Contains(quest.targetTag);
+        else
+            return true;
+    }
+
+    private void HandleDialogInteraction(string npcName, QuestData quest, bool isJustFinished)
+    {
+        //포푸
+        if (npcName == "포푸" && popuController != null)
+        {
+           
+            popuController.OnPopuQuestStateChanged(quest.questID, quest.currentCount, quest.isCompleted);
+        }
+        // 2. 이불
+        else if (npcName == "이불" && eebulController != null)
+        {
+            if (isJustFinished) eebulController.OnQuestCompleted(quest.questID);
+        }
+        // 3. 연유
+        else if (npcName == "연유" && yonyuController != null)
+        {
+            if (isJustFinished) yonyuController.OnQuestCompleted(quest.questID);
+        }
+        // 4. 바늘
+        else if (npcName == "바늘" && baneulController != null)
+        {
+            if (isJustFinished) baneulController.OnQuestCompleted(quest.questID);
+        }
     }
 }
