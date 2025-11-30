@@ -638,6 +638,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 412989899}
     - target: {fileID: 731875255129499658, guid: a2bb0ffa781f63341b2214a7f0073676, type: 3}
+      propertyPath: interactRange
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 731875255129499658, guid: a2bb0ffa781f63341b2214a7f0073676, type: 3}
       propertyPath: purchasePanel
       value: 
       objectReference: {fileID: 2050274537}

@@ -24,6 +24,9 @@ public class PlayerInteraction : MonoBehaviour
 
     private void Update()
     {
+        // Ray ½Ã°¢È­
+        Debug.DrawRay(transform.position, transform.forward * interactRange, Color.red);
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             TryInteract();
