@@ -8,9 +8,9 @@ using System.Linq;
 [System.Serializable]
 public class IngredientUIItem
 {
-    public string label;            // (구분용 메모) 예: 허브 버튼
-    public Ingredient ingredient;   // 연결할 재료 데이터
-    public Text buttonText;         // 개수를 표시할 버튼의 텍스트 컴포넌트
+    public string label;         
+    public Ingredient ingredient; 
+    public Text buttonText;      
 }
 
 public class DrinkMakingManager : MonoBehaviour
@@ -27,12 +27,11 @@ public class DrinkMakingManager : MonoBehaviour
     public Recipe failedDrink;
     public GameObject playerHand;
 
-    [Header("--- [Team Request] Inventory & Result ---")]
+    [Header("인벤토리")]
     public Recipe currentDrink;
     public PlayerInventory playerInventory;
 
-    [Header("--- [UI Update] 재료 개수 표시 설정 ---")]
-    // ★ 여기에 재료와 텍스트를 짝지어서 등록해주세요! ★
+    [Header("재료 개수")]
     public List<IngredientUIItem> ingredientUIs;
 
     private Ingredient currentBase;
@@ -66,7 +65,6 @@ public class DrinkMakingManager : MonoBehaviour
         if (drinkResultImage != null)
             drinkResultImage.gameObject.SetActive(false);
 
-        // [추가됨] 창이 열릴 때 재료 개수 갱신
         UpdateIngredientCounts();
     }
 
@@ -78,35 +76,31 @@ public class DrinkMakingManager : MonoBehaviour
         }
     }
 
-    // ★ 인벤토리 정보를 받아와서 UI 텍스트를 바꿔주는 함수 ★
     private void UpdateIngredientCounts()
     {
         if (playerInventory == null) return;
 
         foreach (var item in ingredientUIs)
         {
-            // 데이터와 텍스트가 모두 잘 연결되어 있다면
             if (item.ingredient != null && item.buttonText != null)
             {
-                // 1. 이름 가져오기
+
                 string name = item.ingredient.ingredientName;
 
-                // 2. 개수 가져오기 (구매 데이터가 없으면 무제한 취급하거나 0개)
                 int count = 0;
                 if (item.ingredient.purchaseData != null)
                 {
                     count = playerInventory.GetMaterialAmount(item.ingredient.purchaseData);
                 }
 
-                // 3. 텍스트 변경: "밤하늘 허브\n(5개)"
-                // 구매 데이터가 없는 베이스 재료 등은 개수 표시 안 함
+
                 if (item.ingredient.purchaseData != null)
                 {
                     item.buttonText.text = $"({count})";
                 }
                 else
                 {
-                    item.buttonText.text = name; // 개수 없이 이름만
+                    item.buttonText.text = name;
                 }
             }
         }
@@ -146,7 +140,7 @@ public class DrinkMakingManager : MonoBehaviour
 
                 if (amountInUse >= currentStock)
                 {
-                    Debug.Log($"[재료 부족] {ingredientSO.ingredientName} 재고 부족!");
+                    Debug.Log($"[재료 부족] {ingredientSO.ingredientName} 재고 부족");
                     return;
                 }
             }
@@ -166,7 +160,7 @@ public class DrinkMakingManager : MonoBehaviour
     {
         Recipe result = CheckRecipe();
         currentDrink = result;
-        Debug.Log($"[Manager] 음료 완성 및 저장됨: {currentDrink.drinkName}");
+        Debug.Log($"음료 완성 및 저장: {currentDrink.drinkName}");
 
         StartCoroutine(ShowDrinkResult(result));
     }
@@ -197,7 +191,6 @@ public class DrinkMakingManager : MonoBehaviour
             }
         }
 
-        // [추가됨] 재료를 썼으니 개수를 다시 갱신해서 보여줌
         UpdateIngredientCounts();
 
         baseSelectionPanel.SetActive(false);
