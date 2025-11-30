@@ -6,6 +6,7 @@ public class QuestDialog
     public string questID;      //예: "EEBUL_GHOST_5"
     [TextArea(2, 5)]
     public string[] lines;      //한 줄씩 대사
+    public Sprite dialogSprite;
 }
 
 [CreateAssetMenu(menuName = "Dialog/DialogData")]
@@ -24,6 +25,16 @@ public class DialogData : ScriptableObject
         }
 
         Debug.LogWarning($"DialogData: questID {questID} 에 해당하는 대사가 없음");
+        return null;
+    }
+
+    public Sprite GetSprite(string questID)
+    {
+        foreach (var d in dialogs)
+        {
+            if (d.questID == questID)
+                return d.dialogSprite;
+        }
         return null;
     }
 }

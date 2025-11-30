@@ -45,7 +45,9 @@ public class NPCDialogController : MonoBehaviour
         if (lines == null || lines.Length == 0)
             return;
 
-        DialogManager.Instance.Show(lines);
+        Sprite sprite = dialogData.GetSprite(questID);
+
+        DialogManager.Instance.Show(lines, sprite);
     }
 
 }

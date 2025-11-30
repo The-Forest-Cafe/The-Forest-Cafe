@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8250655410172163877
 RectTransform:
   m_ObjectHideFlags: 0
@@ -35,8 +35,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -311.9}
-  m_SizeDelta: {x: 125, y: 372.87}
+  m_AnchoredPosition: {x: 0.0010528564, y: -332.73}
+  m_SizeDelta: {x: 149.51, y: 414.53}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2382387686769981213
 GameObject:
@@ -73,8 +73,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.42999268}
-  m_SizeDelta: {x: 125, y: 125}
+  m_AnchoredPosition: {x: 0, y: -10}
+  m_SizeDelta: {x: 125, y: 113}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &3092946125274761410
 CanvasRenderer:
@@ -104,8 +104,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -1831390891, guid: 08342dc2f8468394db0ce49bd68af91a, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -193,8 +193,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 123.3}
-  m_SizeDelta: {x: 125, y: 125}
+  m_AnchoredPosition: {x: 0, y: 90}
+  m_SizeDelta: {x: 130, y: 125}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &4632315455205400559
 CanvasRenderer:
@@ -224,8 +224,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 397331222, guid: 392a1bd208845e24c8f8c1b8a97be4c9, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -277,7 +277,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8240735337726605928}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &5278878648907292447
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,9 +323,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 8693844350351168202}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000045776367}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 269.99994}
   m_SizeDelta: {x: 125, y: 125}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &8198078624855539602
@@ -344,7 +356,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 3b48408d30d5322438985d009c02a4d5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -489,14 +501,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuButton: {fileID: 6487391924000996456}
-  menuButtonImage: {fileID: 0}
+  menuButtonImage: {fileID: 5004464114851940452}
   subMenu: {fileID: 1301698407607797312}
-  hamburgerIcon: {fileID: 0}
-  closeIcon: {fileID: 0}
+  hamburgerIcon: {fileID: 21300000, guid: 3b48408d30d5322438985d009c02a4d5, type: 3}
+  closeIcon: {fileID: 21300000, guid: d3767dcd8f091fd409a8e5f6a4467f97, type: 3}
   questButton: {fileID: 8264475904036253120}
   recipeButton: {fileID: 2893590757136106374}
   settingsButton: {fileID: 6314706598539893645}
-  settingsPanel: {fileID: 1588789694421400487, guid: 3194365f17b45a745abfc169d49d47f9, type: 3}
+  settingsPanel: {fileID: 0}
+  questBookPanel: {fileID: 0}
+  recipeBookPanel: {fileID: 0}
 --- !u!1 &6372599059615980769
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,8 +546,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 61.865}
-  m_SizeDelta: {x: 125, y: 125}
+  m_AnchoredPosition: {x: 0, y: 50}
+  m_SizeDelta: {x: 122, y: 138}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &574619514780840045
 CanvasRenderer:
@@ -563,8 +577,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -1890205898, guid: a737a0f1da758344faefba1752794cdf, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -617,7 +631,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5025975872977812849, guid: 0ace2306bb132164d9032847dc4fd3ec, type: 3}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
