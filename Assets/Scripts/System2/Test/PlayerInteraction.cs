@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
@@ -8,14 +9,33 @@ public class PlayerInteraction : MonoBehaviour
     public bool hasDrink = false;
     public LayerMask npcLayer;
 
+    public Camera mapCamera;
+    public LayerMask targetLayers;
+    public GameObject makeDrinkPanel;
+    public GameObject purchasePanel;
+
     private void Update()
     {
-        // Ray 시각화
-        Debug.DrawRay(transform.position, transform.forward * interactRange, Color.red);
-
         if (Input.GetKeyDown(KeyCode.E))
         {
             TryInteract();
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = mapCamera.ScreenPointToRay(Input.mousePosition); 
+
+            if (Physics.Raycast(ray, out RaycastHit hit, 100f, targetLayers))
+            {
+                GameObject clickedObject = hit.collider.gameObject;
+                Debug.Log("클릭된 오브젝트: " + clickedObject.name);
+                if (clickedObject.layer == LayerMask.NameToLayer("Computer")) { 
+                    purchasePanel.SetActive(true); 
+                } 
+                else if (clickedObject.layer == LayerMask.NameToLayer("Coffee Machine")) { 
+                    makeDrinkPanel.SetActive(true); 
+                } 
+            } 
         }
     }
 

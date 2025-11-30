@@ -169,6 +169,12 @@ MonoBehaviour:
   npcLayer:
     serializedVersion: 2
     m_Bits: 64
+  mapCamera: {fileID: 0}
+  targetLayers:
+    serializedVersion: 2
+    m_Bits: 768
+  makeDrinkPanel: {fileID: 0}
+  purchasePanel: {fileID: 0}
 --- !u!114 &6556262414164222035
 MonoBehaviour:
   m_ObjectHideFlags: 0
