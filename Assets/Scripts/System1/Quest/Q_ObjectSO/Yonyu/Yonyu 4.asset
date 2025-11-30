@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d58804825151fae40b4f307df0663b58, type: 3}
   m_Name: Yonyu 4
   m_EditorClassIdentifier: 
-  questTitle: "\uC5F0\uC720 \uD018\uC2A4\uD2B84"
-  description: "\uC5F0\uC720 \uD018\uC2A4\uD2B84"
+  questID: YONYU_PEARL_3
+  questTitle: "\uC5F0\uC720\uC5D0\uAC8C \uC2EC\uD574 \uC9C4\uC8FC \uBC84\uBE14\uD2F0
+    1\uC794 \uD314\uAE30"
+  description: "\uC5F0\uC720\uC5D0\uAC8C \uC2EC\uD574 \uC9C4\uC8FC \uBC84\uBE14\uD2F0
+    1\uC794 \uD314\uAE30"
   targetCustomer: {fileID: 11400000, guid: d0192cb3accb97c4c902c615e7afbcfe, type: 2}
   targetRecipe: {fileID: 11400000, guid: 4ca048ec3fc18834a8abc6061f5f16b1, type: 2}
   targetTag: 0

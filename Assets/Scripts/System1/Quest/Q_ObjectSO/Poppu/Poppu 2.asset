@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d58804825151fae40b4f307df0663b58, type: 3}
   m_Name: Poppu 2
   m_EditorClassIdentifier: 
-  questTitle: "\uD3EC\uD478 \uD018\uC2A4\uD2B82"
-  description: "\uD3EC\uD478 \uD018\uC2A4\uD2B82"
+  questID: POPU_GHOST_5
+  questTitle: "\uD3EC\uD478\uC5D0\uAC8C \uC720\uB839 \uC2AC\uD514\uC774 \uB77C\uB5BC
+    5\uC794 \uD314\uAE30"
+  description: "\uD3EC\uD478\uC5D0\uAC8C \uC720\uB839 \uC2AC\uD514\uC774 \uB77C\uB5BC
+    5\uC794 \uD314\uAE30"
   targetCustomer: {fileID: 11400000, guid: 343d1851ba7537a419ce29f1dce88c97, type: 2}
   targetRecipe: {fileID: 11400000, guid: 7ea36d6c4d23b644ca5d022b2884fd91, type: 2}
   targetTag: 0
