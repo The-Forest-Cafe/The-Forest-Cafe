@@ -3,7 +3,6 @@ using UnityEngine;
 public class PlayerInteraction : MonoBehaviour
 {
     public MoneyManager money;
-    public PopuDialogController popuNPC;
 
     public float interactRange = 2f;
     public bool hasDrink = false;
