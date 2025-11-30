@@ -90,6 +90,10 @@ public class PlayerInteraction : MonoBehaviour
             money.AddMoney(npc.currentOrder.price);
             QuestManager.Instance.UpdateQuestProgress(npc, drink);
         }
+        else
+        {
+            ScoreManager.Instance.ApplyPenalty(PenaltyType.WrongServing, 5);
+        }
 
         OrderData order = new();
         order.customerName = npc.myData.npcName;
