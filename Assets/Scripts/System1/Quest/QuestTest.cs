@@ -10,8 +10,21 @@ public class QuestTest : MonoBehaviour
     {
         if (QuestManager.Instance != null)
         {
-            Debug.Log("테스트: 서빙 시뮬레이션");
-            QuestManager.Instance.UpdateQuestProgress(testCustomer, testDrink);
+            GameObject dummyGO = new GameObject("Test_Dummy_Customer");
+
+            CustomerController dummyController = dummyGO.AddComponent<CustomerController>();
+
+            dummyController.myData = testCustomer;
+
+            Debug.Log($"테스트: 가상의 [{testCustomer.npcName}] 손님에게 서빙 시뮬레이션 실행");
+
+            QuestManager.Instance.UpdateQuestProgress(dummyController, testDrink);
+
+            Destroy(dummyGO);
+        }
+        else
+        {
+            Debug.LogError("QuestManager가 씬에 없습니다!");
         }
     }
 
