@@ -52,6 +52,11 @@ public class CustomerController : MonoBehaviour
     {
         if (isWaitingForOrder)
         {
+            if (QuestManager.Instance != null && currentOrder != null)
+            {
+                QuestManager.Instance.UpdateQuestProgress(this, currentOrder);
+            }
+
             OnOrderAccepted();
         }
     }
