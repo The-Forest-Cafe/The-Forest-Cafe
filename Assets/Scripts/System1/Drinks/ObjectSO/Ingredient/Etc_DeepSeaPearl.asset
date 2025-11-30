@@ -15,3 +15,4 @@ MonoBehaviour:
   ingredientName: "\uC2EC\uD574 \uC9C4\uC8FC \uD384"
   icon: {fileID: 0}
   type: 3
+  purchaseData: {fileID: 11400000, guid: 57c101640b1cc4042a62d6824cdcdbc4, type: 2}
