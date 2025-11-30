@@ -7,6 +7,8 @@ using UnityEngine.EventSystems;
 
 public class DrinkMakingManager : MonoBehaviour
 {
+    public static DrinkMakingManager Instance;
+
     [Header("UI Panels")]
     public GameObject baseSelectionPanel;
     public GameObject ingredientSelectionPanel;
@@ -17,12 +19,21 @@ public class DrinkMakingManager : MonoBehaviour
     public Recipe failedDrink;
     public GameObject playerHand;
 
+    [Header("결과물")]
+    public Recipe currentDrink;
+
     private Ingredient currentBase;
     private List<Ingredient> currentIngredients = new List<Ingredient>();
     private List<Image> toggledButtons = new List<Image>();
 
+    private void Awake()
+    {
+        if (Instance == null) Instance = this;
+    }
+
     private void OnEnable()
     {
+
         foreach (var img in toggledButtons)
         {
             if (img != null)
@@ -62,7 +73,6 @@ public class DrinkMakingManager : MonoBehaviour
     public void AddIngredient(Ingredient ingredientSO)
     {
         GameObject clickedBtn = EventSystem.current.currentSelectedGameObject;
-
         if (clickedBtn == null) return;
 
         Image btnImage = clickedBtn.GetComponent<Image>();
@@ -70,27 +80,22 @@ public class DrinkMakingManager : MonoBehaviour
         if (currentIngredients.Contains(ingredientSO))
         {
             currentIngredients.Remove(ingredientSO);
-
             if (btnImage != null)
             {
                 Color c = btnImage.color;
                 c.a = 1f;
                 btnImage.color = c;
-
-                if (toggledButtons.Contains(btnImage))
-                    toggledButtons.Remove(btnImage);
+                if (toggledButtons.Contains(btnImage)) toggledButtons.Remove(btnImage);
             }
         }
         else
         {
             currentIngredients.Add(ingredientSO);
-
             if (btnImage != null)
             {
                 Color c = btnImage.color;
                 c.a = 0.5f;
                 btnImage.color = c;
-
                 toggledButtons.Add(btnImage);
             }
         }
@@ -99,6 +104,10 @@ public class DrinkMakingManager : MonoBehaviour
     public void OnCompleteButton()
     {
         Recipe result = CheckRecipe();
+
+        currentDrink = result;
+        Debug.Log($"음료 완성: {currentDrink.drinkName}");
+
         StartCoroutine(ShowDrinkResult(result));
     }
 
@@ -107,9 +116,7 @@ public class DrinkMakingManager : MonoBehaviour
         foreach (Recipe recipe in allRecipes)
         {
             if (recipe.baseIngredient != currentBase) continue;
-
             if (recipe.ingredients.Count != currentIngredients.Count) continue;
-
             bool allMatch = recipe.ingredients.All(item => currentIngredients.Contains(item));
 
             if (allMatch) return recipe;
@@ -129,7 +136,7 @@ public class DrinkMakingManager : MonoBehaviour
         }
 
         yield return new WaitForSeconds(2.0f);
-        /*
+
         if (playerHand != null && result.drinkPrefab != null)
         {
             foreach (Transform child in playerHand.transform)
@@ -138,7 +145,7 @@ public class DrinkMakingManager : MonoBehaviour
             GameObject obj = Instantiate(result.drinkPrefab, playerHand.transform);
             obj.transform.localPosition = Vector3.zero;
             obj.transform.localRotation = Quaternion.identity;
-        }*/
+        }
 
         ClosePanel();
     }
