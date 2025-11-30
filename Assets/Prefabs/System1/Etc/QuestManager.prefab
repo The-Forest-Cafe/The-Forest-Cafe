@@ -59,3 +59,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6e8a8930adbb59e4dabb697ae0853d4f, type: 2}
   - {fileID: 11400000, guid: 737a22e35d551244197d624523fc211e, type: 2}
   - {fileID: 11400000, guid: 7fb630cd37a661a4bbbed944c5c8309b, type: 2}
+  popuController: {fileID: -2741536311729205993, guid: 10b2c1f2ec594a0438dd7a872eda49cd, type: 3}
+  eebulController: {fileID: -6079676366174444211, guid: a81ed2acbd2ad9c439b4b699b96cd0c8, type: 3}
+  yonyuController: {fileID: -1272962531428424108, guid: 72829d36cc4ccf24fac641f1c09727e4, type: 3}
+  baneulController: {fileID: -493839767691288086, guid: 0d6a6b5799d61e44ebd99e1de56662b3, type: 3}

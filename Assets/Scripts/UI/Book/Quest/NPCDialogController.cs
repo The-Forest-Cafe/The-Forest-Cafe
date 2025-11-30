@@ -2,15 +2,8 @@ using UnityEngine;
 
 public class NPCDialogController : MonoBehaviour
 {
-    public static NPCDialogController Instance;
-
     public DialogData dialogData;
 
-
-    void Awake()
-    {
-        Instance = this;
-    }
 
     // === 퀘스트 시스템에서 이 함수를 호출 ===
     public void OnQuestCompleted(string questID)

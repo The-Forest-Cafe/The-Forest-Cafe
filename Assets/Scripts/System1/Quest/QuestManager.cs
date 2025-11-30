@@ -10,8 +10,10 @@ public class QuestManager : MonoBehaviour
     public List<QuestData> activeQuests;
 
     [Header("대사 컨트롤러")]
-    public PopuDialogController popuController;   
-    public NPCDialogController npcController;   
+    public PopuDialogController popuController;
+    public NPCDialogController eebulController;   
+    public NPCDialogController yonyuController; 
+    public NPCDialogController baneulController;
 
     public event Action<QuestData> OnQuestUpdated;
     public event Action<QuestData> OnQuestCompleted;
@@ -96,10 +98,19 @@ public class QuestManager : MonoBehaviour
            
             popuController.OnPopuQuestStateChanged(quest.questID, quest.currentCount, quest.isCompleted);
         }
-        else if (npcController != null)
+        else if (npcName == "이불" && eebulController != null)
         {
-            if (isJustFinished) npcController.OnQuestCompleted(quest.questID);
+            eebulController.OnQuestCompleted(quest.questID);
         }
-      
+        else if (npcName == "연유" && yonyuController != null)
+        {
+            yonyuController.OnQuestCompleted(quest.questID);
+        }
+        else if (npcName == "바늘" && baneulController != null)
+        {
+            baneulController.OnQuestCompleted(quest.questID);
+        }
+
+
     }
 }
