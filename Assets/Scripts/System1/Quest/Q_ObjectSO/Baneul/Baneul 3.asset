@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d58804825151fae40b4f307df0663b58, type: 3}
   m_Name: Baneul 3
   m_EditorClassIdentifier: 
-  questTitle: "\uBC14\uB298 \uD018\uC2A4\uD2B83"
-  description: "\uBC14\uB298 \uD018\uC2A4\uD2B83"
+  questID: BANEUL_STAR_10
+  questTitle: "\uBC14\uB298\uC5D0\uAC8C \uBCC4\uBE5B \uC720\uC131\uCC28 10\uC794
+    \uD314\uAE30"
+  description: "\uBC14\uB298\uC5D0\uAC8C \uBCC4\uBE5B \uC720\uC131\uCC28 10\uC794
+    \uD314\uAE30"
   targetCustomer: {fileID: 11400000, guid: 227d4738112ab7b4e810c0a022b15db7, type: 2}
   targetRecipe: {fileID: 11400000, guid: 68dae3f39bc39b9498bbffa636fffcf9, type: 2}
   targetTag: 0

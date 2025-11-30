@@ -62,19 +62,6 @@ public class CustomerController : MonoBehaviour
         }
     }
 
-    private void OnMouseDown()
-    {
-        if (isWaitingForOrder)
-        {
-            if (QuestManager.Instance != null && currentOrder != null)
-            {
-                QuestManager.Instance.UpdateQuestProgress(this, currentOrder);
-            }
-
-            OnOrderAccepted();
-        }
-    }
-
     private void HideAllBubbles()
     {
         if (bubbleExclamation != null) bubbleExclamation.SetActive(false);
@@ -307,6 +294,6 @@ public class CustomerController : MonoBehaviour
         }
 
         agent.SetDestination(exitPoint.position);
-        Destroy(gameObject, 5.0f);
+        Destroy(gameObject, 3.0f);
     }
 }
