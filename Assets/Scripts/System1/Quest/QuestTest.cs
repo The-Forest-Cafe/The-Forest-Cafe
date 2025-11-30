@@ -18,10 +18,8 @@ public class QuestTest : MonoBehaviour
 
             Debug.Log($"테스트: 가상의 [{testCustomer.npcName}] 손님에게 서빙 시뮬레이션 실행");
 
-            // 4. 이제 '컨트롤러'를 넘겨주면 매니저가 받아줍니다.
             QuestManager.Instance.UpdateQuestProgress(dummyController, testDrink);
 
-            // 5. 볼일 다 봤으니 가짜 손님은 바로 삭제합니다.
             Destroy(dummyGO);
         }
         else
