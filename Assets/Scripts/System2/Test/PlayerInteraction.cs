@@ -21,21 +21,22 @@ public class PlayerInteraction : MonoBehaviour
         Ray ray = new Ray(transform.position, transform.forward);
         if (Physics.Raycast(ray, out RaycastHit hit, interactRange, npcLayer))
         {
-            INPCOrderable orderable = hit.collider.GetComponent<INPCOrderable>();
-            if (orderable != null && orderable.HasOrder)
+            CustomerController orderable = hit.collider.GetComponent<CustomerController>();
+            if (orderable != null && orderable.isWaitingForOrder)
             {
                 ReceiveOrder(orderable);
             }
         }
     }
 
-    private void ReceiveOrder(INPCOrderable npc)
+    private void ReceiveOrder(CustomerController npc)
     {
-        OrderData order = npc.GetOrder();
-        npc.MarkOrderReceived();
+        OrderData order = new();
+        order.customerName = npc.myData.npcName;
+        order.drinkName = npc.currentOrder.drinkName;
+
+        npc.OnOrderAccepted();
 
         OrderManager.Instance.AddOrder(order);
-
-        Debug.Log($"주문 받음 : {order.drinkName}");
     }
 }
