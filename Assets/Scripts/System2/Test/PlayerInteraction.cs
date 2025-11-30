@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerInteraction : MonoBehaviour
 {
     public MoneyManager money;
+    public PopuDialogController popuNPC;
 
     public float interactRange = 2f;
     public bool hasDrink = false;
@@ -34,7 +35,7 @@ public class PlayerInteraction : MonoBehaviour
             if (npc != null && npc.isSitting && hasDrink)
             {
                 // 음료 주기
-                GiveDrink(npc);
+                GiveDrink(npc, DrinkMakingManager.Instance.currentDrink);
             }
         }
     }
@@ -51,12 +52,13 @@ public class PlayerInteraction : MonoBehaviour
         OrderManager.Instance.AddOrder(order);
     }
 
-    private void GiveDrink(CustomerController npc)
+    private void GiveDrink(CustomerController npc, Recipe drink)
     {
-        // if correct drink
-            // money.AddMoney(npc.currentOrder.price);
-            // npc 전용 대사 출력
-        // else
+        if (npc.currentOrder == drink)
+        {
+            money.AddMoney(npc.currentOrder.price);
+            QuestManager.Instance.UpdateQuestProgress(npc, drink);
+        }
 
         OrderData order = new();
         order.customerName = npc.myData.npcName;
