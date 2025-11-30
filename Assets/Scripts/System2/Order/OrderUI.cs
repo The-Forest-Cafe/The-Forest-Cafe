@@ -21,6 +21,7 @@ public class OrderUI : MonoBehaviour
     {
         GameObject newOrderUI = Instantiate(orderPrefab, orderParent);
         string drinkName = ChangeDrinkName(order);
+        Debug.Log(drinkName);
 
         newOrderUI.GetComponent<Image>().sprite = SearchSprite(drinkName);
         orderPrefabs.Add(drinkName, newOrderUI);
@@ -37,8 +38,8 @@ public class OrderUI : MonoBehaviour
         switch (order.customerName)
         {
             case "바늘":
-                    order.customerName = "Rabbit";
-                    break;
+                order.customerName = "Rabbit";
+                break;
             case "이불":
                 order.customerName = "Owl";
                 break;
@@ -68,13 +69,10 @@ public class OrderUI : MonoBehaviour
                 order.drinkName = "Octopus";
                 break;
             case "심해 진주 버블티":
-                order.drinkName = "DeapSea";
+                order.drinkName = "DeepSea";
                 break;
             case "별빛 유성차":
                 order.drinkName = "Star";
-                break;
-            case "이상한 음료":
-                order.drinkName = "Otter";
                 break;
         }
 

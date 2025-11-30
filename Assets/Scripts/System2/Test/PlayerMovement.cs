@@ -2,35 +2,47 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private float h = 0.0f;
     private float v = 0.0f;
-    private float r = 0.0f;
-    private Vector3 moveDir;
+    private Rigidbody rb;
 
-    private Rigidbody rigid;
-
-    public float moveSpeed = 10.0f;
+    public Camera mapCamera;
+    public LayerMask groundMask;
+    public float moveSpeed = 4.0f;
     public float rotSpeed = 80.0f;
 
     private void Start()
     {
-        rigid = GetComponent<Rigidbody>();
-        rigid.freezeRotation = true;
+        rb = GetComponent<Rigidbody>();
+        rb.freezeRotation = true;
     }
 
     private void Update()
     {
-        h = Input.GetAxis("Horizontal");
         v = Input.GetAxis("Vertical");
-        r = Input.GetAxis("Mouse X");
-
-        // 전후좌우 이동 방향 벡터 계산
-        moveDir = (Vector3.forward * v) + (Vector3.right * h);
     }
 
     private void FixedUpdate()
     {
-        rigid.MovePosition(rigid.position + moveDir.normalized * moveSpeed * Time.fixedDeltaTime);
-        rigid.MoveRotation(rigid.rotation * Quaternion.Euler(Vector3.up * r * rotSpeed * Time.fixedDeltaTime));
+        RotateToMouse();
+
+        Vector3 moveDir = transform.forward * v;
+        rb.MovePosition(rb.position + moveDir.normalized * moveSpeed * Time.fixedDeltaTime);
+    }
+
+    void RotateToMouse()
+    {
+        Ray ray = mapCamera.ScreenPointToRay(Input.mousePosition);
+        Debug.DrawRay(ray.origin, ray.direction * 50f, Color.green);
+        if (Physics.Raycast(ray, out RaycastHit hit, 100f, groundMask))
+        {
+            Vector3 lookDir = hit.point - transform.position;
+            lookDir.y = 0;
+
+            if (lookDir.sqrMagnitude > 0.01f)
+            {
+                Quaternion targetRot = Quaternion.LookRotation(lookDir);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, rotSpeed * Time.fixedDeltaTime);
+            }
+        }
     }
 }
