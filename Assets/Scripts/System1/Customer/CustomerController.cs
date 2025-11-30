@@ -290,6 +290,7 @@ public class CustomerController : MonoBehaviour
             OrderManager.Instance.RemoveOrder(order);
 
             ScoreManager.Instance.ApplyPenalty(PenaltyType.CustomerLeave, 10);
+            SFXManager.Instance.Play("fail_customer"); //손님 이탈, 잘못된 서빙
 
             Debug.Log($"({myData.npcName}): 대기 시간이 지나 퇴장");
             StartCoroutine(ShowTimedBubble(bubbleAngry, 3.0f));

@@ -211,6 +211,7 @@ public class DrinkMakingManager : MonoBehaviour
         {
             if (failedResultPanel != null)
             {
+                SFXManager.Instance.Play("fail_make"); //잘못된 음료 제작
                 ScoreManager.Instance.ApplyPenalty(PenaltyType.WrongDrink, 7);
                 failedResultPanel.SetActive(true);
             }
@@ -219,6 +220,7 @@ public class DrinkMakingManager : MonoBehaviour
         {
             if (drinkResultImage != null && result.drinkIcon != null)
             {
+                SFXManager.Instance.Play("make"); //음료 제작 성공
                 drinkResultImage.sprite = result.drinkIcon;
                 drinkResultImage.gameObject.SetActive(true);
             }

@@ -30,7 +30,7 @@ public class CustomerSpawner : MonoBehaviour
     {
         while (true)
         {
-            float waitTime = Random.Range(3.0f, 7.0f); // 25~40초로 나중에 수정
+            float waitTime = Random.Range(20.0f, 35.0f); // 25~40초로 나중에 수정
 
             yield return new WaitForSeconds(waitTime);
 
@@ -38,6 +38,7 @@ public class CustomerSpawner : MonoBehaviour
             if (GetAvailableSeatCount() > 0)
             {
                 SpawnRandomCustomer();
+                SFXManager.Instance.Play("entrance");
             }
             else
             {
