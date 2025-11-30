@@ -1084,7 +1084,7 @@ GameObject:
   - component: {fileID: 8167086947903990014}
   - component: {fileID: 1930493106494449998}
   - component: {fileID: 5080024766916006837}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: sudal_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

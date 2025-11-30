@@ -51,6 +51,8 @@ public class PurchaseManager : MonoBehaviour
 
     public void OnPurchaseButtonClicked()
     {
+        if (TotalSum.Instance.totalSum <= 0) return;
+
         bool res = MoneyManager.Instance.SpendMoney(TotalSum.Instance.totalSum);
         SetNoticeText(res);
 

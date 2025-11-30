@@ -15,6 +15,7 @@ MonoBehaviour:
   drinkName: "\uBCC4\uBE5B \uC720\uC131\uCC28"
   drinkIcon: {fileID: 21300000, guid: ae2ee451ca2af5f4b9dba6e973c47c95, type: 3}
   drinkPrefab: {fileID: 0}
+  price: 0
   drinkTags: 
   baseIngredient: {fileID: 11400000, guid: 4a3012a1274b3674fb7faf4a29d1591c, type: 2}
   baseWay: {fileID: 11400000, guid: 3b7eae59245198f45a44b2c212ca1d30, type: 2}
