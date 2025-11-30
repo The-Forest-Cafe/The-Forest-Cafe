@@ -798,7 +798,7 @@ GameObject:
   - component: {fileID: 2681914447423457215}
   - component: {fileID: 528091684406267670}
   - component: {fileID: 3176712417636470046}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: penguin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
