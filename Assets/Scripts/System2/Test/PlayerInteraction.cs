@@ -2,7 +2,10 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
+    public MoneyManager money;
+
     public float interactRange = 2f;
+    public bool hasDrink = false;
     public LayerMask npcLayer;
 
     private void Update()
@@ -21,21 +24,45 @@ public class PlayerInteraction : MonoBehaviour
         Ray ray = new Ray(transform.position, transform.forward);
         if (Physics.Raycast(ray, out RaycastHit hit, interactRange, npcLayer))
         {
-            INPCOrderable orderable = hit.collider.GetComponent<INPCOrderable>();
-            if (orderable != null && orderable.HasOrder)
+            CustomerController npc = hit.collider.GetComponent<CustomerController>();
+            if (npc != null && npc.isWaitingForOrder)
             {
-                ReceiveOrder(orderable);
+                // 주문 받기
+                Debug.Log(npc.name);
+                ReceiveOrder(npc);
+            }
+            if (npc != null && npc.isSitting && hasDrink)
+            {
+                // 음료 주기
+                GiveDrink(npc, DrinkMakingManager.Instance.currentDrink);
             }
         }
     }
 
-    private void ReceiveOrder(INPCOrderable npc)
+    private void ReceiveOrder(CustomerController npc)
     {
-        OrderData order = npc.GetOrder();
-        npc.MarkOrderReceived();
+        OrderData order = new();
+        order.customerName = npc.myData.npcName;
+        order.drinkName = npc.currentOrder.drinkName;
+
+        Debug.Log($"손님({npc.myData.npcName}): 주문 완료");
+        npc.OnOrderAccepted();
 
         OrderManager.Instance.AddOrder(order);
+    }
 
-        Debug.Log($"주문 받음 : {order.drinkName}");
+    private void GiveDrink(CustomerController npc, Recipe drink)
+    {
+        if (npc.currentOrder == drink)
+        {
+            money.AddMoney(npc.currentOrder.price);
+            QuestManager.Instance.UpdateQuestProgress(npc, drink);
+        }
+
+        OrderData order = new();
+        order.customerName = npc.myData.npcName;
+        order.drinkName = npc.currentOrder.drinkName;
+
+        OrderManager.Instance.RemoveOrder(order);
     }
 }
