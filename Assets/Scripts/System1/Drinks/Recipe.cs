@@ -14,6 +14,8 @@ public enum DrinkTag
 [CreateAssetMenu(fileName = "New Recipe", menuName = "Cafe/Recipe")]
 public class Recipe : ScriptableObject
 {
+    public string recipeID;
+
     public string drinkName;            // 완성 음료 이름
     public Sprite drinkIcon;            // 완성 시 음료 이미지
     public GameObject drinkPrefab;      //3D 모델
