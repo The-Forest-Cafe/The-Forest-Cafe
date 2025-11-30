@@ -34,6 +34,11 @@ public class PurchaseManager : MonoBehaviour
         onPurchaseListInited += InitList;
     }
 
+    private void OnEnable()
+    {
+        Time.timeScale = 0;
+    }
+
     private void InitList()
     {
         purchaseList = new();
@@ -124,5 +129,10 @@ public class PurchaseManager : MonoBehaviour
             noticeText.color = c;
             yield return null;
         }
+    }
+
+    private void OnDisable()
+    {
+        Time.timeScale = 1;
     }
 }

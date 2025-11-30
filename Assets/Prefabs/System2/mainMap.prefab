@@ -470,6 +470,10 @@ PrefabInstance:
       value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: -5252614058741765545, guid: 4f6175a415eb6db42837ba32b95e7449, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -5252614058741765545, guid: 4f6175a415eb6db42837ba32b95e7449, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -732,6 +736,10 @@ PrefabInstance:
     - target: {fileID: -1174860629196917552, guid: 4f6175a415eb6db42837ba32b95e7449, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: -1160714213396305298, guid: 4f6175a415eb6db42837ba32b95e7449, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -1160714213396305298, guid: 4f6175a415eb6db42837ba32b95e7449, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1325,6 +1333,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7062952950331925328, guid: 4f6175a415eb6db42837ba32b95e7449, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2239206289378091353}
+    - targetCorrespondingSourceObject: {fileID: -1160714213396305298, guid: 4f6175a415eb6db42837ba32b95e7449, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6492248786463056221}
+    - targetCorrespondingSourceObject: {fileID: -5252614058741765545, guid: 4f6175a415eb6db42837ba32b95e7449, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2227898599214613995}
     - targetCorrespondingSourceObject: {fileID: 6758570035053590185, guid: 4f6175a415eb6db42837ba32b95e7449, type: 3}
       insertIndex: -1
       addedObject: {fileID: 719192296494984568}
@@ -1420,6 +1434,32 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.2, y: 0.2, z: 0.0031723683}
   m_Center: {x: 0.04, y: -0.04, z: 0.008498833}
+--- !u!1 &757047376628989785 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -5252614058741765545, guid: 4f6175a415eb6db42837ba32b95e7449, type: 3}
+  m_PrefabInstance: {fileID: 4439253750936622350}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &2227898599214613995
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 757047376628989785}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.008398788, y: 0.011742296, z: 0.010554057}
+  m_Center: {x: 0.00005724863, y: -0.000038475955, z: -0.004318212}
 --- !u!1 &2900706851413373823 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1574575724460566129, guid: 4f6175a415eb6db42837ba32b95e7449, type: 3}
@@ -1630,6 +1670,32 @@ MonoBehaviour:
   m_IgnoreFromBuild: 0
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
+--- !u!1 &5944528679666319200 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -1160714213396305298, guid: 4f6175a415eb6db42837ba32b95e7449, type: 3}
+  m_PrefabInstance: {fileID: 4439253750936622350}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &6492248786463056221
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5944528679666319200}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.0038915235
+  m_Center: {x: 0.00058505044, y: -0.00013336164, z: 0.0035064141}
 --- !u!1 &6890440968104916574 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7062952950331925328, guid: 4f6175a415eb6db42837ba32b95e7449, type: 3}
