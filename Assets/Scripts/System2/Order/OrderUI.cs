@@ -53,6 +53,12 @@ public class OrderUI : MonoBehaviour
                 order.customerName = "Otter";
                 break;
             case "¿œπ› º’¥‘2":
+                order.customerName = "Otter";
+                break;
+            case "¿œπ› º’¥‘3":
+                order.customerName = "Turtle";
+                break;
+            case "¿œπ› º’¥‘4":
                 order.customerName = "Turtle";
                 break;
         }

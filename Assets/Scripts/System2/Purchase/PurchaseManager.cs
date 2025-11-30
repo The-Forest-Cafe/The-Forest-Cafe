@@ -34,10 +34,10 @@ public class PurchaseManager : MonoBehaviour
         onPurchaseListInited += InitList;
     }
 
-    private void OnEnable()
+/*    private void OnEnable()
     {
         Time.timeScale = 0;
-    }
+    }*/
 
     private void InitList()
     {
@@ -131,8 +131,8 @@ public class PurchaseManager : MonoBehaviour
         }
     }
 
-    private void OnDisable()
+/*    private void OnDisable()
     {
         Time.timeScale = 1;
-    }
+    }*/
 }
