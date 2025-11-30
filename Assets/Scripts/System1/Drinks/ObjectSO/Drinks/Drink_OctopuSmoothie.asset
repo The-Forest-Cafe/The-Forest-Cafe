@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83f115d3b45423a4e8af900515064316, type: 3}
   m_Name: Drink_OctopuSmoothie
   m_EditorClassIdentifier: 
+  recipeID: Octopus_Dream
   drinkName: "\uBB38\uC5B4\uC758 \uAFC8 \uC2A4\uBB34\uB514"
   drinkIcon: {fileID: 0}
   drinkPrefab: {fileID: 0}

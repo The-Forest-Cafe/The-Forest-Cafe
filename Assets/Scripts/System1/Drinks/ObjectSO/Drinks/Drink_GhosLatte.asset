@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83f115d3b45423a4e8af900515064316, type: 3}
   m_Name: Drink_GhosLatte
   m_EditorClassIdentifier: 
+  recipeID: Ghost_Latte
   drinkName: "\uC720\uB839 \uC2AC\uD514\uC774 \uB77C\uB5BC"
   drinkIcon: {fileID: 0}
   drinkPrefab: {fileID: 0}

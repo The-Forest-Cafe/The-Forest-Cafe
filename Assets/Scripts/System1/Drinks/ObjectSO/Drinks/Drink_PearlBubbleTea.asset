@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83f115d3b45423a4e8af900515064316, type: 3}
   m_Name: Drink_PearlBubbleTea
   m_EditorClassIdentifier: 
+  recipeID: Sea_Pearl
   drinkName: "\uC2EC\uD574 \uC9C4\uC8FC \uBC84\uBE14\uD2F0"
   drinkIcon: {fileID: 0}
   drinkPrefab: {fileID: 0}

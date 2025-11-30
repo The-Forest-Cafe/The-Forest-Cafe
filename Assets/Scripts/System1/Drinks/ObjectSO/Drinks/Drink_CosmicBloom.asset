@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83f115d3b45423a4e8af900515064316, type: 3}
   m_Name: Drink_CosmicBloom
   m_EditorClassIdentifier: 
+  recipeID: Cosmic_Bloom
   drinkName: "\uCF54\uC2A4\uBBF9 \uBE14\uB8F8"
   drinkIcon: {fileID: 0}
   drinkPrefab: {fileID: 0}

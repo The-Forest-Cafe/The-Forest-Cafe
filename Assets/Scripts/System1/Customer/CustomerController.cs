@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class CustomerController : MonoBehaviour
 {
@@ -11,6 +12,11 @@ public class CustomerController : MonoBehaviour
 
     [Header("현재 주문")]
     public Recipe currentOrder;
+
+    [Header("말풍선")]
+    public GameObject bubbleExclamation; // 느낌표
+    public GameObject bubbleHappy;       // 좋음
+    public GameObject bubbleAngry;       // 화남
 
     private NavMeshAgent agent;
     private Animator anim;
@@ -34,6 +40,14 @@ public class CustomerController : MonoBehaviour
 
         // 애니메이터
         anim = GetComponentInChildren<Animator>();
+
+        if (anim != null)
+        {
+            anim.applyRootMotion = false;
+        }
+
+        // 초기화
+        HideAllBubbles();
 
         MoveToCounter();
     }
@@ -61,10 +75,30 @@ public class CustomerController : MonoBehaviour
         }
     }
 
+    private void HideAllBubbles()
+    {
+        if (bubbleExclamation != null) bubbleExclamation.SetActive(false);
+        if (bubbleHappy != null) bubbleHappy.SetActive(false);
+        if (bubbleAngry != null) bubbleAngry.SetActive(false);
+    }
+
+    private IEnumerator ShowTimedBubble(GameObject bubble, float duration)
+    {
+        HideAllBubbles(); 
+        if (bubble != null)
+        {
+            bubble.SetActive(true);
+            yield return new WaitForSeconds(duration);
+            bubble.SetActive(false);
+        }
+    }
+
     public void OnOrderAccepted()
     {
         isWaitingForOrder = false;
         StopAllCoroutines();
+
+        if (bubbleExclamation != null) bubbleExclamation.SetActive(false);
 
         Debug.Log($"손님({myData.npcName}): 주문 완료");
         MoveToSeat();
@@ -106,16 +140,63 @@ public class CustomerController : MonoBehaviour
     {
         isWaitingForOrder = true;
         DecideOrder();
-        Debug.Log($"손님({myData.npcName}): \"{currentOrder.drinkName}\" 주문");
-        StartCoroutine(PatienceTimer());
+
+        if (currentOrder != null)
+        {
+            HideAllBubbles();
+            if (bubbleExclamation != null) bubbleExclamation.SetActive(true);
+
+            Debug.Log($"손님({myData.npcName}): \"{currentOrder.drinkName}\" 주문");
+            StartCoroutine(PatienceTimer());
+        }
+        else
+        {
+            Debug.Log($"손님({myData.npcName}): (주문할 수 있는 메뉴가 없음)");
+            LeaveCafe(false);
+        }
     }
 
+    // ID 비교
     private void DecideOrder()
     {
         if (myData.possibleMenus != null && myData.possibleMenus.Count > 0)
         {
-            int randomIndex = Random.Range(0, myData.possibleMenus.Count);
-            currentOrder = myData.possibleMenus[randomIndex];
+            List<Recipe> unlockedCandidates = new List<Recipe>();
+
+            if (RecipeManager.Instance != null)
+            {
+                var unlockedDataList = RecipeManager.Instance.GetUnlockedRecipes();
+
+                foreach (var menu in myData.possibleMenus)
+                {
+                    // ID 비교
+                    bool isUnlocked = unlockedDataList.Exists(r => r.recipeId == menu.recipeID);
+
+                    if (isUnlocked)
+                    {
+                        unlockedCandidates.Add(menu);
+                    }
+                }
+            }
+            else
+            {
+                unlockedCandidates.AddRange(myData.possibleMenus);
+            }
+
+            if (unlockedCandidates.Count > 0)
+            {
+                int randomIndex = Random.Range(0, unlockedCandidates.Count);
+                currentOrder = unlockedCandidates[randomIndex];
+            }
+            else
+            {
+                Debug.LogWarning($"[Customer] {myData.npcName}: 해금된 메뉴가 없음");
+                currentOrder = null;
+            }
+        }
+        else
+        {
+            currentOrder = null;
         }
     }
 
@@ -141,7 +222,43 @@ public class CustomerController : MonoBehaviour
             transform.rotation = mySeatPoint.rotation;
         }
 
-        Debug.Log($"({myData.npcName}): 착석 완료");
+        Debug.Log($"({myData.npcName}): 착석 완료. 음료 대기 시작(20초)");
+
+        //음료가 나오는 타이머 시작
+        StartCoroutine(ServingPatienceTimer());
+    }
+
+    //음료 대기 타이머
+    private IEnumerator ServingPatienceTimer()
+    {
+        float timer = patienceTime; // 20초
+        while (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            yield return null;
+        }
+        // 시간 초과
+        Debug.Log($"손님({myData.npcName}): 음료가 너무 늦어요");
+        LeaveCafe(true);
+    }
+
+    //음료 서빙 (성공 시 호출)
+    public void OnDrinkServed()
+    {
+        StopAllCoroutines();
+
+        // 서빙 성공
+        StartCoroutine(ShowTimedBubble(bubbleHappy, 4.0f));
+
+        StartCoroutine(HappyWaitTimer());
+    }
+
+    //음료 마시는 시간
+    private IEnumerator HappyWaitTimer()
+    {
+        Debug.Log($"손님({myData.npcName}): 음료 받음 (20초 후 퇴장)");
+        yield return new WaitForSeconds(20.0f);
+        LeaveCafe(false); // 만족하며 퇴장
     }
 
     private IEnumerator PatienceTimer()
@@ -159,6 +276,7 @@ public class CustomerController : MonoBehaviour
     {
         isWaitingForOrder = false;
         isSitting = false;
+
         StopAllCoroutines();
 
         if (anim != null)
@@ -177,8 +295,16 @@ public class CustomerController : MonoBehaviour
             mySpawner.ReturnSeat(mySeatPoint);
         }
 
-        if (isAngry) Debug.Log($"({myData.npcName}): 대기 시간이 지나 퇴장");
-        else Debug.Log($"({myData.npcName}) 퇴장");
+        if (isAngry)
+        {
+            Debug.Log($"({myData.npcName}): 대기 시간이 지나 퇴장");
+            StartCoroutine(ShowTimedBubble(bubbleAngry, 3.0f));
+        }
+        else
+        {
+            Debug.Log($"({myData.npcName}) 퇴장");
+            HideAllBubbles();
+        }
 
         agent.SetDestination(exitPoint.position);
         Destroy(gameObject, 5.0f);

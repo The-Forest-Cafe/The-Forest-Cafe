@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83f115d3b45423a4e8af900515064316, type: 3}
   m_Name: Drink_StarTea
   m_EditorClassIdentifier: 
+  recipeID: Starlight_tea
   drinkName: "\uBCC4\uBE5B \uC720\uC131\uCC28"
   drinkIcon: {fileID: 21300000, guid: ae2ee451ca2af5f4b9dba6e973c47c95, type: 3}
   drinkPrefab: {fileID: 0}
