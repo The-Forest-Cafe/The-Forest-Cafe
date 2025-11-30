@@ -9,7 +9,7 @@ public class OrderUI : MonoBehaviour
 
     [SerializeField]
     private List<Sprite> orderSprites = new();
-    private Dictionary<string, GameObject> orderPrefabs = new();
+    private List<KeyValuePair<string, GameObject>> orderPrefabs = new();
 
     private void Start()
     {
@@ -24,14 +24,29 @@ public class OrderUI : MonoBehaviour
         Debug.Log(drinkName);
 
         newOrderUI.GetComponent<Image>().sprite = SearchSprite(drinkName);
-        orderPrefabs.Add(drinkName, newOrderUI);
+        orderPrefabs.Add(new KeyValuePair<string, GameObject>(drinkName, newOrderUI));
     }
 
     private void HandleRemoveOrder(OrderData order)
     {
         string drinkName = ChangeDrinkName(order);
-        Destroy(orderPrefabs[drinkName]);
-        orderPrefabs.Remove(drinkName);
+        KeyValuePair<string, GameObject>? target = null;
+
+        foreach (var pair in orderPrefabs)
+        {
+            if (pair.Key == drinkName)
+            {
+                Destroy(pair.Value);
+                target = pair;
+                break;
+            }
+        }
+
+        if (target.HasValue)
+        {
+            orderPrefabs.Remove(target.Value);
+        }
+
     }
 
     private string ChangeDrinkName(OrderData order)

@@ -284,6 +284,11 @@ public class CustomerController : MonoBehaviour
 
         if (isAngry)
         {
+            OrderData order = new();
+            order.customerName = myData.npcName;
+            order.drinkName = currentOrder.drinkName;
+            OrderManager.Instance.RemoveOrder(order);
+
             Debug.Log($"({myData.npcName}): 대기 시간이 지나 퇴장");
             StartCoroutine(ShowTimedBubble(bubbleAngry, 3.0f));
         }
