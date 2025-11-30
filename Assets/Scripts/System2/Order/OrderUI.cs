@@ -30,6 +30,7 @@ public class OrderUI : MonoBehaviour
     private void HandleRemoveOrder(OrderData order)
     {
         string drinkName = ChangeDrinkName(order);
+        Destroy(orderPrefabs[drinkName]);
         orderPrefabs.Remove(drinkName);
     }
 
