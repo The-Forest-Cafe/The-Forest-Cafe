@@ -25,7 +25,7 @@ public class CustomerController : MonoBehaviour
     private Transform mySeatPoint;
     private CustomerSpawner mySpawner;
 
-    private float patienceTime = 20.0f;
+    private float patienceTime = 40.0f;
 
     public void Initialize(CustomerData data, Transform counter, Transform exit, Transform seat, CustomerSpawner spawner)
     {
