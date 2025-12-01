@@ -168,6 +168,7 @@ public class DrinkMakingManager : MonoBehaviour
         currentDrink = result;
         Debug.Log($"음료 완성 및 저장: {currentDrink.drinkName}");
 
+        playerInventory.gameObject.GetComponent<PlayerInteraction>().RemoveDrinkModel();
         playerInventory.gameObject.GetComponent<PlayerInteraction>().hasDrink = true;
         playerInventory.gameObject.GetComponent<PlayerInteraction>().SetDrinkModel();
 
