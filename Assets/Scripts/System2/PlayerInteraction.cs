@@ -88,7 +88,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             npc.OnDrinkServed();
             money.AddMoney(npc.currentOrder.price);
-            QuestManager.Instance.UpdateQuestProgress(npc, drink);
+            // QuestManager.Instance.UpdateQuestProgress(npc, drink);
         }
         else
         {
@@ -121,7 +121,10 @@ public class PlayerInteraction : MonoBehaviour
 
     public void RemoveDrinkModel()
     {
-        hasDrink = false;
-        currentModeling.SetActive(false);
+        if (currentModeling)
+        {
+            hasDrink = false;
+            currentModeling.SetActive(false);
+        }
     }
 }
